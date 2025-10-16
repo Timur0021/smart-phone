@@ -64,6 +64,7 @@ class AdminPanelProvider extends PanelProvider
                 SpatieLaravelTranslatablePlugin::make()
                     ->defaultLocales(config('app.locales')),
                 FilamentBackgroundsPlugin::make()
+                    ->showAttribution(false)
                     ->remember(43200),
                 FilamentShieldPlugin::make(),
                 FilamentEditProfilePlugin::make()
