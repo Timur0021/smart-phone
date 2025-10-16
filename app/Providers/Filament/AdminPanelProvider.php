@@ -22,6 +22,7 @@ use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Joaopaulolndev\FilamentEditProfile\FilamentEditProfilePlugin;
 use Modules\Team\Livewire\CustomPasswordForm;
 use Modules\Team\Livewire\CustomRoleForm;
+use Swis\Filament\Backgrounds\FilamentBackgroundsPlugin;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -62,6 +63,8 @@ class AdminPanelProvider extends PanelProvider
             ->plugins([
                 SpatieLaravelTranslatablePlugin::make()
                     ->defaultLocales(config('app.locales')),
+                FilamentBackgroundsPlugin::make()
+                    ->remember(43200),
                 FilamentShieldPlugin::make(),
                 FilamentEditProfilePlugin::make()
                     ->shouldShowAvatarForm()
