@@ -1,0 +1,10 @@
+scalar DateTimeUtc @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\DateTimeUtc")
+type Response {
+    status: String
+    message: String
+}
+type PaginatorInfo {
+    currentPage: Int!
+    lastPage: Int!
+    total: Int!
+}
