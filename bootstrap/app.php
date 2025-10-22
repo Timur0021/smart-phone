@@ -12,7 +12,7 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        $middleware->append(\App\Http\Middlewares\Localization::class);
+        $middleware->append(\App\Http\Middleware\Localization::class);
         $middleware->validateCsrfTokens(except: [
             'graphql',
         ]);

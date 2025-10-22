@@ -1,0 +1,28 @@
+<?php
+
+return [
+    'navigationLabel_branch' => 'Branches',
+    'modelLabel_branch' => 'Branch',
+    'pluralModelLabel_branch' => 'Branches',
+    'navigationLabel_admin' => 'Administrators',
+    'modelLabel_admin' => 'Administrators',
+    'pluralModelLabel_admin' => 'Administrators',
+    'navigationGroup_user' => 'Team',
+    'main_section' => 'Main Information',
+    'id' => 'ID',
+    'name' => 'Name',
+    'locale' => 'Locale',
+    'email' => 'Email',
+    'role' => 'Role',
+    'branch' => 'Branch',
+    'password' => 'Password',
+    'profile' => 'Profile',
+    'user_navigation' => 'Users',
+    'change_password' => 'Change Password',
+    'update_your_password' => 'Update your password',
+    'new_password' => 'New Password',
+    'password_confirmation' => 'Confirm Password',
+    'passwords_do_not_match' => 'Passwords do not match.',
+    'select_role' => 'Select Role',
+    'select_user_role' => 'Select a role for the user',
+];

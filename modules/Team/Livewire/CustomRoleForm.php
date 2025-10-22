@@ -37,12 +37,12 @@ class CustomRoleForm extends Component implements HasForms
     {
         return $form
             ->schema([
-                Section::make('Вибрати роль')
+                Section::make(__('uk.select_role'))
                     ->aside()
-                    ->description('Виберіть роль свому користувачу')
+                    ->description(__('uk.select_user_role'))
                     ->schema([
                         Select::make('role')
-                            ->label('Роль')
+                            ->label(__('uk.role'))
                             ->options(Role::query()->pluck('name', 'name')->toArray())
                             ->required(),
                     ]),

@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use App\Http\Middleware\SetFilamentLocale;
 use BezhanSalleh\FilamentShield\FilamentShieldPlugin;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
@@ -56,6 +57,7 @@ class AdminPanelProvider extends PanelProvider
                 SubstituteBindings::class,
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
+                SetFilamentLocale::class,
             ])
             ->authMiddleware([
                 Authenticate::class,
@@ -70,9 +72,9 @@ class AdminPanelProvider extends PanelProvider
                 FilamentEditProfilePlugin::make()
                     ->shouldShowAvatarForm()
                     ->slug('my-profile')
-                    ->setTitle('Профіль')
-                    ->setNavigationLabel('Профіль')
-                    ->setNavigationGroup('Команда')
+                    ->setTitle(fn() => __('uk.profile'))
+                    ->setNavigationLabel(fn() => __('uk.profile'))
+                    ->setNavigationGroup(fn() => __('uk.navigationGroup_user'))
                     ->setIcon('fas-id-card')
                     ->shouldShowSanctumTokens(false)
                     ->shouldShowBrowserSessionsForm(false)

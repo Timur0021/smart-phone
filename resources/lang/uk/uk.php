@@ -1,0 +1,26 @@
+<?php
+
+return [
+    'navigationLabel_branch' => 'Філіали',
+    'modelLabel_branch' => 'Філіал',
+    'pluralModelLabel_branch' => 'Філіали',
+    'navigationLabel_admin' => 'Адміністратори',
+    'modelLabel_admin' => 'Адміністратори',
+    'pluralModelLabel_admin' => 'Адміністратори',
+    'navigationGroup_user' => 'Команда',
+    'main_section' => 'Головна інформація',
+    'id' => 'ID',
+    'name' => 'Назва',
+    'email' => 'Електронна пошта',
+    'role' => 'Роль',
+    'branch' => 'Філіал',
+    'password' => 'Пароль',
+    'profile' => 'Профіль',
+    'change_password' => 'Зміна пароля',
+    'update_your_password' => 'Оновіть свій пароль',
+    'new_password' => 'Новий пароль',
+    'password_confirmation' => 'Підтвердження пароля',
+    'passwords_do_not_match' => 'Паролі не співпадають.',
+    'select_role' => 'Вибрати роль',
+    'select_user_role' => 'Виберіть роль свому користувачу',
+];

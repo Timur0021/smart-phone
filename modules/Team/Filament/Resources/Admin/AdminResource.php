@@ -27,31 +27,39 @@ class AdminResource extends Resource
 
     protected static ?int $navigationSort = 4;
 
-    protected static ?string $navigationLabel = 'Адміністратори';
-
-    protected static ?string $modelLabel = 'Адміністратори';
-
-    protected static ?string $navigationGroup = 'Команда';
-
     protected static ?string $slug = 'users';
 
-    public static function getPluralLabel(): string
+    public static function getNavigationGroup(): ?string
     {
-        return 'Користувачі';
+        return __('uk.navigationGroup_user');
+    }
+
+    public static function getNavigationLabel(): string
+    {
+        return __('uk.navigationLabel_admin');
+    }
+
+    public static function getModelLabel(): string
+    {
+        return __('uk.modelLabel_admin');
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return __('uk.pluralModelLabel_admin');
     }
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Section::make('Головна інформація')
-                    ->description('Створення Адміна')
+                Section::make(__('uk.main_section'))
                     ->schema([
                         TextInput::make('name')
-                            ->label('Ім\'я')
+                            ->label(__('uk.name'))
                             ->required(),
                         TextInput::make('email')
-                            ->label('Емейл')
+                            ->label(__('uk.email'))
                             ->type('email')
                             ->unique(
                                 table: User::class,
@@ -61,17 +69,19 @@ class AdminResource extends Resource
                             ->validationMessages([
                                 'unique' => 'Користувач з таким емейлом вже існує.',
                             ])
-                            ->required()
-                            ->placeholder('Enter Email'),
+                            ->required(),
                         Password::make('password')
-                            ->label('Пароль')
+                            ->label(__('uk.password'))
                             ->required()
-                            ->rules('min:8')
-                            ->placeholder('Enter Password'),
+                            ->rules('min:3'),
                         Select::make('roles')
-                            ->label('Роль')
+                            ->label(__('uk.role'))
                             ->preload()
-                            ->relationship('roles', 'name')
+                            ->relationship('roles', 'name'),
+                        Select::make('branch')
+                            ->label(__('uk.branch'))
+                            ->preload()
+                            ->relationship('branch', 'name')
                     ])->columnSpan(2)->columns(2),
             ]);
     }
@@ -86,17 +96,19 @@ class AdminResource extends Resource
             )
             ->columns([
                 TextColumn::make('id')
-                    ->label('ID')
+                    ->label(__('uk.id'))
                     ->sortable(),
                 TextColumn::make('name')
-                    ->label('Ім\'я')
+                    ->label(__('uk.name'))
                     ->searchable()
                     ->sortable(),
                 TextColumn::make('email')
-                    ->label('Емейл')
+                    ->label(__('uk.email'))
                     ->searchable(),
                 TextColumn::make('roles.name')
-                    ->label('Роль'),
+                    ->label(__('uk.role')),
+                TextColumn::make('branch.name')
+                    ->label(__('uk.branch')),
             ])
             ->filters([
                 SelectFilter::make('roles')

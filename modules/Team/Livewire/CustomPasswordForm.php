@@ -31,22 +31,22 @@ class CustomPasswordForm extends Component implements HasForms
     {
         return $form
             ->schema([
-                Section::make('Зміна пароля')
+                Section::make(__('uk.change_password'))
                     ->aside()
-                    ->description('Оновіть свій пароль')
+                    ->description(__('uk.update_your_password'))
                     ->schema([
                         Password::make('password')
-                            ->label('Новий пароль')
+                            ->label(__('uk.new_password'))
                             ->required()
                             ->password()
                             ->rule('min:8')
                             ->dehydrated()
                             ->validationMessages([
-                                'same' => 'Паролі не співпадають.',
+                                'same' => __('uk.passwords_do_not_match'),
                             ])
                             ->same('password_confirmation'),
                         Password::make('password_confirmation')
-                            ->label('Підтвердження пароля')
+                            ->label(__('uk.password_confirmation'))
                             ->required()
                             ->password()
                             ->dehydrated(false),
