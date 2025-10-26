@@ -16,6 +16,7 @@ return [
     'branch' => 'Філіал',
     'password' => 'Пароль',
     'profile' => 'Профіль',
+    'locale' => 'Мова',
     'change_password' => 'Зміна пароля',
     'update_your_password' => 'Оновіть свій пароль',
     'new_password' => 'Новий пароль',
