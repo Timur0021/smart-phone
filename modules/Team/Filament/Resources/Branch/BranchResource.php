@@ -54,7 +54,7 @@ class BranchResource extends Resource
     {
         return $form
             ->schema([
-                Section::make(trans('branch.main_section'))
+                Section::make(trans('uk.main_section'))
                     ->schema([
                         TextInput::make('name')
                             ->label(__('uk.name'))
