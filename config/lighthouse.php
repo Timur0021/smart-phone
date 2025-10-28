@@ -192,7 +192,10 @@ return [
         'types' => 'App\\GraphQL\\Types',
         'interfaces' => 'App\\GraphQL\\Interfaces',
         'unions' => 'App\\GraphQL\\Unions',
-        'scalars' => 'App\\GraphQL\\Scalars',
+        'scalars' => [
+            'App\\GraphQL\\Scalars',
+            'Modules\Blocks\GraphQL\Scalars',
+        ],
         'directives' => 'App\\GraphQL\\Directives',
         'validators' => 'App\\GraphQL\\Validators',
     ],
