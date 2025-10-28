@@ -1,0 +1,17 @@
+type Block {
+    id:ID
+    name: String
+    sliders: [Slider]
+    block: [BlockItem]
+    type: String
+}
+type BlockItem {
+    type: String
+    data: [Item]
+}
+type Item {
+    key: String
+    value: StringOrArray
+    type: String
+    items: [BlockItem]
+}

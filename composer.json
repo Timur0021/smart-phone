@@ -16,6 +16,7 @@
         "filament/spatie-laravel-translatable-plugin": "^3.2",
         "guava/filament-icon-picker": "^2.0",
         "joaopaulolndev/filament-edit-profile": "^1.0",
+        "kalnoy/nestedset": "^6.0",
         "laravel/framework": "^12.0",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.10.1",
