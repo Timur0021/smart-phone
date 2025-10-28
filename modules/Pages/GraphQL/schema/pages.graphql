@@ -17,7 +17,6 @@ type Page {
     benefits_description: String
     faqs: [Faq]
     blocks: [Block]
-    feedbacks: [Feedback]
     sliders: [Slider]
     breadcrumbs: [Breadcrumbs]
 }
@@ -62,16 +61,7 @@ type Slider {
     status: Boolean
     with_category: Boolean
     pages: [Page]
-    feedbacks: [Feedback]
-    products: [Product]
-    product_data: ProductsData
 }
-
-type ProductsData {
-    categories: [Category]
-    products: [Product]
-}
-
 
 type Gallery {
     id: ID
@@ -137,9 +127,9 @@ input FeedbackInput {
     mark: Float
 }
 
-extend type Mutation {
-    createFeedback(input: FeedbackInput @spread): Response @field(resolver: "Modules\\Pages\\GraphQL\\Mutations\\CreateFeedback")
-}
+#extend type Mutation {
+#    createFeedback(input: FeedbackInput @spread): Response @field(resolver: "Modules\\Pages\\GraphQL\\Mutations\\CreateFeedback")
+#}
 
 type Query {
     page(input: PageInput! @spread): Page @field(resolver: "Modules\\Pages\\GraphQL\\Queries\\Page")
