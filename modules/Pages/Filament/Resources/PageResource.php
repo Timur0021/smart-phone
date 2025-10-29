@@ -95,9 +95,6 @@ class PageResource extends Resource
                                 }
                             })
                             ->maxLength(255),
-                        Select::make('color')
-                            ->label('Колір')
-                            ->options(ColorEnum::class),
                         Forms\Components\Textarea::make('description')
                             ->label('Опис')
                             ->columnSpanFull(),
@@ -150,16 +147,6 @@ class PageResource extends Resource
                     ->searchable(query: function (Builder $query, string $search): Builder {
                         return $query->whereRaw('LOWER(title) LIKE ?', ['%' . mb_strtolower($search) . '%']);
                     }),
-                BadgeColumn::make('color')
-                    ->label('Колір')
-                    ->formatStateUsing(fn($state) => ColorEnum::tryFrom($state)?->getLabel() ?? $state)
-                    ->color(fn($state) => match (ColorEnum::tryFrom($state)) {
-                        ColorEnum::BLUE => 'info',
-                        ColorEnum::GREEN => 'success',
-                        ColorEnum::ORANGE => 'orange',
-                        default => 'gray',
-                    })
-                    ->sortable(),
                 Tables\Columns\ToggleColumn::make('status')
                     ->label('Статус'),
             ])

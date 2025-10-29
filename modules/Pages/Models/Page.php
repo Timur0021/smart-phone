@@ -29,7 +29,6 @@ class Page extends Model implements HasMedia
         'slug',
         'content',
         'status',
-        'color',
         'meta_title',
         'meta_description',
         'seo_title',
