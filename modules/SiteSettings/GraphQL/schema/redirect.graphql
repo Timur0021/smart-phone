@@ -1,0 +1,9 @@
+type Redirect {
+    old_link: String
+    new_link: String
+    status: Boolean
+}
+
+extend type Query {
+    allRedirects: [Redirect] @field(resolver: "Modules\\SiteSettings\\GraphQL\\Queries\\AllRedirects")
+}

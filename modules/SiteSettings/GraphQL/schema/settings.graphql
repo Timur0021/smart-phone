@@ -1,0 +1,52 @@
+type Bootstrap {
+    text_in_site: [TextInSite]
+    settings: [Setting]
+    footers: [Footer]
+    sidebars:[Sidebar]
+    category_articles: [ArticleCategory]
+    words: [Words]
+    product_category: [Category]
+}
+type TextInSite {
+    text: String
+    key: String
+    link: String
+    file: String
+    is_new_window: Boolean
+}
+
+type Feedback {
+    first_name: String
+    phone: String
+    message: String
+    created_at: DateTimeUtc
+    image: String
+}
+
+type Words {
+    name: String
+    link: String
+    active: Boolean
+}
+
+type Setting {
+    name: String
+    key: String
+    value: String
+    to_front: Boolean
+    is_new_window: Boolean
+}
+
+type Sitemap {
+    categories: [String]
+    products: [String]
+    pages: [String]
+    articles: [String]
+    brands: [String]
+}
+
+extend type Query {
+    "View single Setting."
+    settings: Bootstrap @field(resolver: "Modules\\SiteSettings\\GraphQL\\Queries\\Settings")
+    sitemap: Sitemap @field(resolver: "Modules\\SiteSettings\\GraphQL\\Queries\\Sitemap")
+}

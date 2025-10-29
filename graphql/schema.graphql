@@ -2,3 +2,4 @@
 #import ../modules/Team/GraphQL/schema/auth.graphql
 #import ../modules/Pages/GraphQL/schema/pages.graphql
 #import ../modules/Blocks/GraphQL/schema/blocks.graphql
+#import ../modules/SiteSettings/GraphQL/schema/settings.graphql

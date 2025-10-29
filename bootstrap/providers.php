@@ -7,4 +7,5 @@ return [
     \Modules\Request\Providers\RequestServiceProvider::class,
     \Modules\Blocks\Providers\BlockServiceProvider::class,
     \Modules\Pages\Providers\PageServiceProvider::class,
+    \Modules\SiteSettings\Providers\SiteSettingsServiceProvider::class,
 ];
