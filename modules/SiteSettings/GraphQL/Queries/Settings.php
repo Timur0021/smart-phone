@@ -2,7 +2,6 @@
 
 namespace Modules\SiteSettings\GraphQL\Queries;
 
-use Modules\Blog\Models\ArticleCategory;
 use Modules\Pages\Enums\FeedbackStatus;
 use Modules\Pages\Models\Feedback;
 use Modules\Pages\Models\Footer;
@@ -54,35 +53,13 @@ class Settings
             ->orderBy('id')
             ->get();
 
-        $category_articles = ArticleCategory::query()
-            ->where('status', true)
-            ->get();
-
-        $productCategory = Category::query()
-            ->where('active', true)
-            ->whereNull('parent_id')
-            ->with([
-                'children' => function ($query) {
-                    $query->where('active', true)
-                        ->whereHas('products')
-                        ->orderBy('sort_order')
-                        ->orderBy('id')
-                        ->with('characteristics');
-                },
-            ])
-            ->orderBy('sort_order')
-            ->orderBy('id')
-            ->get();
-
 
         return [
             'text_in_site' => $text_in_site,
             'settings' => $settings,
             'footers' => $footers,
             'sidebars' => $sidebars,
-            'category_articles' => $category_articles,
             'words' => $words,
-            'product_category' => $productCategory,
         ];
     }
 }

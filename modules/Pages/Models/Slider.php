@@ -30,25 +30,25 @@ class Slider extends Model implements HasMedia
         'with_category',
     ];
 
-    public array $translatable = ['name'];
+    public array $translatable = [
+        'name'
+    ];
 
     public function getSlugOptions(): SlugOptions
     {
-        $slugOptions = SlugOptions::create()
+        return SlugOptions::create()
             ->generateSlugsFrom('name')
             ->saveSlugsTo('slug')
             ->usingLanguage('en')
             ->doNotGenerateSlugsOnUpdate();
-        return $slugOptions;
-
     }
 
-    public function products(): BelongsToMany
-    {
-        return $this->belongsToMany(Product::class,'product_slider')
-            ->withPivot('sort_order')
-            ->orderBy('product_slider.sort_order');
-    }
+//    public function products(): BelongsToMany
+//    {
+//        return $this->belongsToMany(Product::class,'product_slider')
+//            ->withPivot('sort_order')
+//            ->orderBy('product_slider.sort_order');
+//    }
 
     public function feedbacks(): BelongsToMany
     {
@@ -65,30 +65,5 @@ class Slider extends Model implements HasMedia
     public function blocks(): BelongsToMany
     {
         return $this->belongsToMany(Block::class, 'block_sliders', 'slider_id', 'block_id');
-    }
-
-    public function getProductDataAttribute(): array
-    {
-        $products = $this->products()
-            ->where('active', true)
-            ->orderBy('product_slider.sort_order')
-            ->get();
-
-        $categoryIds = $products->load('categories')
-            ->flatMap(fn($product) => $product->categories->pluck('id'))
-            ->unique();
-
-        $categories = Category::query()
-            ->where('active', true)
-            ->whereNull('parent_id')
-            ->whereIn('id', $categoryIds)
-            ->orderBy('sort_order')
-            ->orderBy('id')
-            ->get();
-
-        return [
-            'categories' => $categories,
-            'products' => $products,
-        ];
     }
 }

@@ -3,9 +3,7 @@ type Bootstrap {
     settings: [Setting]
     footers: [Footer]
     sidebars:[Sidebar]
-    category_articles: [ArticleCategory]
     words: [Words]
-    product_category: [Category]
 }
 type TextInSite {
     text: String
@@ -48,5 +46,4 @@ type Sitemap {
 extend type Query {
     "View single Setting."
     settings: Bootstrap @field(resolver: "Modules\\SiteSettings\\GraphQL\\Queries\\Settings")
-    sitemap: Sitemap @field(resolver: "Modules\\SiteSettings\\GraphQL\\Queries\\Sitemap")
 }

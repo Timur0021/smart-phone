@@ -49,11 +49,6 @@ type Banner {
     image_alt: String
     image_title: String
 }
-type Benefit {
-    title: String
-    description: String
-}
-
 type Slider {
     id: Int
     name: String
@@ -62,15 +57,6 @@ type Slider {
     with_category: Boolean
     pages: [Page]
 }
-
-type Gallery {
-    id: ID
-    name: String
-    slug: String
-    type: String
-    gallery: [String]
-}
-
 type Footer {
     name: String
     slug: String
@@ -131,7 +117,7 @@ input FeedbackInput {
 #    createFeedback(input: FeedbackInput @spread): Response @field(resolver: "Modules\\Pages\\GraphQL\\Mutations\\CreateFeedback")
 #}
 
-type Query {
+extend type Query {
     page(input: PageInput! @spread): Page @field(resolver: "Modules\\Pages\\GraphQL\\Queries\\Page")
     getSitemap: [String!]! @field(resolver: "Modules\\Pages\\GraphQL\\Queries\\GetSitemap")
 }
