@@ -12,6 +12,8 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use FilamentTiptapEditor\TiptapEditor;
+use Modules\Pages\Filament\Forms\FaqForm;
+use Modules\Pages\Filament\Tables\FaqTable;
 use Modules\Pages\Models\Faq;
 use Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor;
 
@@ -38,53 +40,12 @@ class FaqResource extends Resource
 
     public static function form(Form $form): Form
     {
-        return $form
-            ->schema([
-                Forms\Components\Section::make()
-                    ->columns(1)
-                    ->schema([
-                        Forms\Components\TextInput::make('question')
-                            ->label('Питання')
-                            ->required(),
-                        TiptapEditor::make('answer')
-                            ->label('Відповідь')
-                            ->columnSpanFull()
-                            ->required(),
-                        SpatieMediaLibraryFileUpload::make('image')
-                            ->label('Фото')
-                            ->columnSpanFull()
-                            ->conversion('webp')
-                            ->collection('image'),
-                        Forms\Components\Toggle::make('status')
-                            ->label('Активний')
-                            ->default(true),
-                    ]),
-            ]);
+        return FaqForm::configure($form);
     }
 
     public static function table(Table $table): Table
     {
-        return $table
-            ->columns([
-                Tables\Columns\TextColumn::make('question')
-                    ->label('Питання'),
-                Tables\Columns\TextColumn::make('answer')
-                    ->limit(40)
-                    ->label('Відповідь'),
-                Tables\Columns\ToggleColumn::make('status')
-                    ->label('Статус'),
-            ])
-            ->filters([
-                //
-            ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
-            ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
-            ]);
+        return FaqTable::configure($table);
     }
 
     public static function getRelations(): array

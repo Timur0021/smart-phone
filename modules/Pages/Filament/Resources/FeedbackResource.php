@@ -12,7 +12,9 @@ use Filament\Tables\Columns\BadgeColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Modules\Pages\Enums\FeedbackStatus;
+use Modules\Pages\Filament\Forms\FeedbackForm;
 use Modules\Pages\Filament\Resources\FeedbackResource\Pages;
+use Modules\Pages\Filament\Tables\FeedbackTable;
 use Modules\Pages\Models\Feedback;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -42,77 +44,12 @@ class FeedbackResource extends Resource
 
     public static function form(Form $form): Form
     {
-        return $form
-            ->schema([
-                TextInput::make('first_name')
-                    ->label('Ім\'я')
-                    ->required(),
-                Forms\Components\Select::make('status')
-                    ->label('Статус Відгуку')
-                    ->options(FeedbackStatus::class),
-                Forms\Components\Textarea::make('message')
-                    ->label('Повідомлення')
-                    ->columnSpanFull()
-                    ->required(),
-                DateTimePicker::make('created_at')
-                    ->label('Дата створення')
-                    ->required()
-                    ->native(false)
-                    ->formatStateUsing(
-                        fn ($state) => Carbon::parse($state)
-                            ->timezone('Europe/Kyiv')
-                            ->format('Y-m-d H:i:s')
-                    ),
-                Rating::make('mark')
-                    ->label('Оцінка')
-                    ->theme(RatingTheme::HalfStars)
-                    ->size('xl')
-                    ->stars(5),
-                SpatieMediaLibraryFileUpload::make('image')
-                    ->label('Фото')
-                    ->columnSpanFull()
-                    ->conversion('webp')
-                    ->collection('image'),
-            ]);
+        return FeedbackForm::configure($form);
     }
 
     public static function table(Table $table): Table
     {
-        return $table
-            ->defaultSort('created_at', 'desc')
-            ->defaultPaginationPageOption(25)
-            ->columns([
-                TextColumn::make('first_name')
-                    ->label('Ім\'я'),
-                RatingColumn::make('mark')
-                    ->label('Оцінка'),
-                BadgeColumn::make('status')
-                    ->label('Статус Відгуку')
-                    ->badge(fn($state) => FeedbackStatus::tryFrom($state)?->getLabel() ?? 'Unknown')
-                    ->color(fn($state) => FeedbackStatus::tryFrom($state)?->getColor() ?? 'gray')
-                    ->icon(fn($state) => FeedbackStatus::tryFrom($state)?->getIcon() ?? 'fas-question-circle')
-                    ->sortable(),
-                TextColumn::make('created_at')
-                    ->label('Створено')
-                    ->formatStateUsing(fn($state) => Carbon::parse($state)->setTimezone('Europe/Kyiv')->format('Y-m-d H:i')),
-            ])
-            ->filters([
-                SelectFilter::make('status')
-                    ->label('Статус Відгуку')
-                    ->options(function () {
-                        return collect(FeedbackStatus::cases())->mapWithKeys(function ($status) {
-                            return [$status->value => $status->getLabel()];
-                        })->toArray();
-                    }),
-            ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
-            ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
-            ]);
+        return FeedbackTable::configure($table);
     }
 
     public static function getRelations(): array

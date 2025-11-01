@@ -12,7 +12,9 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Modules\Pages\Filament\Forms\FooterForm;
 use Modules\Pages\Filament\Resources\FooterResource\RelationManagers\PagesRelationManager;
+use Modules\Pages\Filament\Tables\FooterTable;
 use Modules\Pages\Models\Footer;
 
 class FooterResource extends Resource
@@ -38,32 +40,12 @@ class FooterResource extends Resource
 
     public static function form(Form $form): Form
     {
-        return $form
-            ->schema([
-                Forms\Components\TextInput::make('name')
-                    ->label('Назва')
-                    ->columnSpanFull(),
-            ]);
+        return FooterForm::configure($form);
     }
 
     public static function table(Table $table): Table
     {
-        return $table
-            ->columns([
-                TextColumn::make('name')
-                    ->label('Назва'),
-            ])
-            ->filters([
-                //
-            ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
-            ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
-            ]);
+        return FooterTable::configure($table);
     }
 
     public static function getRelations(): array

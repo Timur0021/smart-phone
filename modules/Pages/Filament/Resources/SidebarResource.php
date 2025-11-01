@@ -11,7 +11,9 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Modules\Pages\Filament\Forms\SidebarForm;
 use Modules\Pages\Filament\Resources\SidebarResource\RelationManagers\PagesRelationManager;
+use Modules\Pages\Filament\Tables\SidebarTable;
 use Modules\Pages\Models\Sidebar;
 
 class SidebarResource extends Resource
@@ -35,41 +37,12 @@ class SidebarResource extends Resource
 
     public static function form(Form $form): Form
     {
-        return $form
-            ->columns(2)
-            ->schema([
-                Forms\Components\TextInput::make('name')
-                    ->label('Назва'),
-                Select::make('page_id')
-                    ->label('Головна сторінка')
-                    ->relationship('page', 'title', fn($query) => $query->where('status', true)->orderBy('title', 'ASC'))
-                    ->preload(),
-                Toggle::make('is_catalog')
-                    ->label('Каталог')
-                    ->onColor('success')
-                    ->offColor('danger')
-                    ->default(true),
-            ]);
+        return SidebarForm::configure($form);
     }
 
     public static function table(Table $table): Table
     {
-        return $table
-            ->columns([
-                TextColumn::make('name')
-                    ->label('Назва'),
-            ])
-            ->filters([
-                //
-            ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
-            ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
-            ]);
+        return SidebarTable::configure($table);
     }
 
     public static function getRelations(): array
