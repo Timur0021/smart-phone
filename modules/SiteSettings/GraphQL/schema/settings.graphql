@@ -49,6 +49,7 @@ type CategoryShort {
     name: String
     slug: String
     children: [CategoryShort]
+    will_be_soon: Boolean
 }
 
 extend type Query {
