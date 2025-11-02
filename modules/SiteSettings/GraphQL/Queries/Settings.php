@@ -47,6 +47,13 @@ class Settings
             ])
             ->get();
 
+        $product_categories = Category::query()
+            ->where('active', true)
+            ->whereNull('parent_id')
+            ->orderBy('sort_order')
+            ->orderBy('id')
+            ->get();
+
         $words = Word::query()
             ->where('active', true)
             ->orderBy('sort_order')
@@ -56,6 +63,7 @@ class Settings
 
         return [
             'text_in_site' => $text_in_site,
+            'product_categories' => $product_categories,
             'settings' => $settings,
             'footers' => $footers,
             'sidebars' => $sidebars,

@@ -4,6 +4,7 @@ type Bootstrap {
     footers: [Footer]
     sidebars:[Sidebar]
     words: [Words]
+    product_categories: [CategoryShort]
 }
 type TextInSite {
     text: String
@@ -41,6 +42,13 @@ type Sitemap {
     pages: [String]
     articles: [String]
     brands: [String]
+}
+
+type CategoryShort {
+    id: Int
+    name: String
+    slug: String
+    children: [CategoryShort]
 }
 
 extend type Query {
