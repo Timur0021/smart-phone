@@ -12,7 +12,6 @@ type Page {
     meta_description: String
     seo_title: String
     seo_description: String
-    benefits: [Benefit]
     benefits_title: String
     benefits_description: String
     faqs: [Faq]
@@ -68,9 +67,8 @@ type Footer {
 type Sidebar {
     name: String
     slug: String
+    pages: [Page]
     #    children: [Sidebar]
-    pages_data: PagesData
-    page_data: PageData
     #    main_slug: String
 }
 
