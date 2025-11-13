@@ -23,6 +23,7 @@
         "mll-lab/laravel-graphiql": "^4.0",
         "mohamedsabil83/filament-forms-tinyeditor": "^2.4",
         "mokhosh/filament-rating": "^1.4",
+        "mvenghaus/filament-plugin-translatable-inline": "^3.0",
         "nuwave/lighthouse": "^6.63",
         "owenvoke/blade-fontawesome": "^2.9",
         "rawilk/filament-password-input": "^2.1",

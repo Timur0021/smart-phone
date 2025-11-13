@@ -20,37 +20,16 @@ class ImageTitleSubtitleButtonItem
                     ->label('Зображення')
                     ->disk('public')
                     ->directory('blocks')
-                    ->maxSize(\Modules\Blocks\Models\Block::MEDDIUM_FILE_SIZE),
+                    ->maxSize(\Modules\Blocks\Models\Block::MAX_FILE_SIZE),
                 FileUpload::make('imageMobile')
                     ->label('Зображення мобайл')
                     ->disk('public')
                     ->directory('blocks')
-                    ->maxSize(\Modules\Blocks\Models\Block::MEDDIUM_FILE_SIZE),
+                    ->maxSize(\Modules\Blocks\Models\Block::MAX_FILE_SIZE),
                 TranslatableContainer::make(
-                    TextInput::make('title')
-                        ->label('Заголовок'),
+                    TextInput::make('link')
+                        ->label('Посилання'),
                 ),
-
-                TranslatableContainer::make(
-                    Textarea::make('description')
-                        ->label('Опис'),
-                ),
-
-
-                Fieldset::make('Button')
-                    ->schema([
-                        TranslatableContainer::make(
-                            TextInput::make('text')
-                                ->label('Текст'),
-                        ),
-
-                        TranslatableContainer::make(
-                            TextInput::make('link')
-                                ->label('Посилання'),
-                        ),
-                    ])
-                    ->label('Кнопка'),
-
             ]);
     }
 }

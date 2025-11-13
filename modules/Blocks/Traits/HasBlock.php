@@ -133,7 +133,7 @@ trait HasBlock
         'content',
     ];
 
-    const MAX_FILE_SIZE = 1024 * 10;
+    const MAX_FILE_SIZE = 1024 * 50;
     const MEDDIUM_FILE_SIZE = 1024 * 6;
 
     public static function getBlocks(): array
