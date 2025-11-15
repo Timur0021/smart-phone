@@ -28,7 +28,7 @@ class CreateRequest
             DB::commit();
             return [
                 'status' => 'Успіх',
-                'message' => __('messages.request_created'),
+                'message' => 'Заявка успішно створена!',
             ];
         } catch (Error $error) {
             DB::rollBack();
