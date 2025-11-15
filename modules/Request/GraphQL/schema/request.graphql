@@ -1,0 +1,21 @@
+type Request {
+    id: Int
+    name: String
+    last_name: String
+    message: String
+    request_status: RequestStatus
+}
+
+enum RequestStatus {
+    NEW
+    IN_PROGRESS
+    COMPLETED
+}
+
+input CreateRequestInput {
+    phone: String
+}
+
+type Mutation {
+    createRequest(input: CreateRequestInput @spread): Response @field(resolver: "Modules\\Request\\GraphQL\\Mutations\\CreateRequest")
+}

@@ -3,3 +3,4 @@
 #import ../modules/Pages/GraphQL/schema/pages.graphql
 #import ../modules/Blocks/GraphQL/schema/blocks.graphql
 #import ../modules/SiteSettings/GraphQL/schema/settings.graphql
+#import ../modules/Request/GraphQL/schema/request.graphql

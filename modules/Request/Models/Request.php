@@ -13,7 +13,6 @@ class Request extends Model
         'last_name',
         'phone',
         'message',
-        'request_type',
         'request_status',
     ];
 }
