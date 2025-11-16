@@ -16,13 +16,10 @@ class RequestForm
         return $form
             ->schema([
                 Section::make()
-                    ->columns()
                     ->schema([
                         TextInput::make('name')
                             ->label('Ім\'я')
                             ->required(),
-                        TextInput::make('last_name')
-                            ->label('Прізвище'),
                         TextInput::make('phone')
                             ->label('Телефон')
                             ->type('tel')
@@ -32,10 +29,6 @@ class RequestForm
                         Select::make('request_status')
                             ->label('Статус замовлення')
                             ->options(RequestStatus::toArray()),
-                        Textarea::make('message')
-                            ->label('Повідомлення')
-                            ->rows(6)
-                            ->columnSpanFull(),
                     ]),
             ]);
     }

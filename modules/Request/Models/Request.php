@@ -10,9 +10,7 @@ class Request extends Model
 
     protected $fillable = [
         'name',
-        'last_name',
         'phone',
-        'message',
         'request_status',
     ];
 }

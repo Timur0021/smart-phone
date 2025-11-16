@@ -1,8 +1,6 @@
 type Request {
     id: Int
     name: String
-    last_name: String
-    message: String
     request_status: RequestStatus
 }
 
