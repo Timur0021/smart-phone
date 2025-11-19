@@ -1,7 +1,42 @@
+type User {
+    id: Int
+    name: String
+    last_name: String
+    phone: String
+    email: String
+    password: String
+    remember_me: Boolean
+    branch: Branch
+    created_at: DateTimeUtc
+}
+
+type Branch {
+    name: String
+}
+
 type Hello {
     hello: String
 }
 
+type RegisterResponse {
+    token: String
+    user: User
+    status: String
+    message: String
+}
+
+input RegisterInput {
+    name: String
+    last_name: String
+    email: String
+    phone: String
+    password_confirmation: String
+}
+
 type Query {
     hello: String @field(resolver: "Modules\\Team\\GraphQL\\Queries\\Hello")
+}
+
+extend type Mutation {
+    register(input: RegisterInput @spread): RegisterResponse @field(resolver: "Modules\\Team\\GraphQL\\Mutations\\Register")
 }
