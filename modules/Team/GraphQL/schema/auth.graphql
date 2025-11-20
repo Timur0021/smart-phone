@@ -38,5 +38,5 @@ type Query {
 }
 
 extend type Mutation {
-    register(input: RegisterInput @spread): RegisterResponse @field(resolver: "Modules\\Team\\GraphQL\\Mutations\\Register")
+    register(input: RegisterInput @spread): RegisterResponse @field(resolver: "Modules\\Team\\GraphQL\\Mutations\\Auth\\Register")
 }

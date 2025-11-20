@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Team\GraphQL\Mutations;
+namespace Modules\Team\GraphQL\Mutations\Auth;
 
 use GraphQL\Error\Error;
 
