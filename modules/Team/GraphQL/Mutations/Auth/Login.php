@@ -2,10 +2,9 @@
 
 namespace Modules\Team\GraphQL\Mutations\Auth;
 
-use GraphQL\Error\Error;
 use Modules\Team\Services\AuthService;
 
-class Register
+class Login
 {
     /**
      *
@@ -29,6 +28,6 @@ class Register
      */
     public function __invoke(null $_, array $args)
     {
-        return $this->authService->register($args);
+        return $this->authService->login($args);
     }
 }
