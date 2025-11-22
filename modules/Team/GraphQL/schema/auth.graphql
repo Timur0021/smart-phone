@@ -6,6 +6,7 @@ type User {
     email: String
     password: String
     remember_me: Boolean
+    i_agree: Boolean
     branch: Branch
     created_at: DateTimeUtc
 }
@@ -30,6 +31,7 @@ input RegisterInput {
     phone: String
     password: String
     password_confirmation: String
+    i_agree: Boolean
 }
 
 input LoginInput {

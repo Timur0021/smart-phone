@@ -41,6 +41,7 @@ class User extends Authenticatable implements HasMedia, HasAvatar
         'ip',
         'user_agent',
         'remember_me',
+        'i_agree',
         'avatar_url',
     ];
 
