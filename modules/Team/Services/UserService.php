@@ -19,7 +19,7 @@ class UserService
                 'email' => $data['email'] ?? '',
                 'phone' => $data['phone'] ?? '',
                 'remember_me' => false,
-                'i_agree' => false,
+                'i_agree' => $data['i_agree'] ?? false,
                 'email_verified_at' => Carbon::now(),
                 'password' => isset($data['password']) ? Hash::make($data['password']) : null,
                 'remember_token' => $data['remember_token'] ?? Str::random(10),
