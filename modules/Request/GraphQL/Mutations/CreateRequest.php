@@ -21,7 +21,6 @@ class CreateRequest
             DB::beginTransaction();
 
             $args['request_status'] = RequestStatus::NEW->value;
-            $args['name'] = 'User_' . Str::uuid();
 
             Request::query()->create($args);
 

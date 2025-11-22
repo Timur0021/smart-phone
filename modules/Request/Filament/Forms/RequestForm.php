@@ -17,9 +17,6 @@ class RequestForm
             ->schema([
                 Section::make()
                     ->schema([
-                        TextInput::make('name')
-                            ->label('Ім\'я')
-                            ->required(),
                         TextInput::make('phone')
                             ->label('Телефон')
                             ->type('tel')

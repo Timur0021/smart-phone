@@ -22,10 +22,6 @@ class RequestTable
                     ->orderByDesc('created_at')
             )
             ->columns([
-                TextColumn::make('name')
-                    ->label('Ім\'я')
-                    ->searchable()
-                    ->sortable(),
                 TextColumn::make('phone')
                     ->label('Телефон')
                     ->searchable()
