@@ -18,7 +18,7 @@ class UserService
                 'last_name' => $data['last_name'] ?? '',
                 'email' => $data['email'] ?? '',
                 'phone' => $data['phone'] ?? '',
-                'remember_me' => false,
+                'remember_me' => $data['remember_me'] ??false,
                 'i_agree' => $data['i_agree'] ?? false,
                 'email_verified_at' => Carbon::now(),
                 'password' => isset($data['password']) ? Hash::make($data['password']) : null,
