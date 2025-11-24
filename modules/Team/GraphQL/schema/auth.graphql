@@ -47,4 +47,5 @@ type Query {
 extend type Mutation {
     register(input: RegisterInput @spread): RegisterResponse @field(resolver: "Modules\\Team\\GraphQL\\Mutations\\Auth\\Register")
     login(input: LoginInput @spread): RegisterResponse @field(resolver: "Modules\\Team\\GraphQL\\Mutations\\Auth\\Login")
+    logout: Response @guard @field(resolver: "Modules\\Team\\GraphQL\\Mutations\\Auth\\Logout")
 }
