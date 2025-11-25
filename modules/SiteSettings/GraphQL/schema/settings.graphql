@@ -32,7 +32,6 @@ type Setting {
     name: String
     key: String
     value: String
-    image: String
     to_front: Boolean
     is_new_window: Boolean
 }
@@ -49,6 +48,7 @@ type CategoryShort {
     id: Int
     name: String
     slug: String
+    image: String
     children: [CategoryShort]
     will_be_soon: Boolean
 }
