@@ -32,6 +32,7 @@ type Setting {
     name: String
     key: String
     value: String
+    image: String
     to_front: Boolean
     is_new_window: Boolean
 }
