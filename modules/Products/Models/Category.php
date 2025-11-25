@@ -48,7 +48,8 @@ class Category extends Model implements HasMedia
     public function registerMediaConversions(Media $media = null): void
     {
         $this->addMediaConversion('webp')
-            ->format('webp');
+            ->format('webp')
+            ->nonQueued();
     }
 
     public function parent(): BelongsTo
@@ -59,5 +60,12 @@ class Category extends Model implements HasMedia
     public function children(): HasMany
     {
         return $this->hasMany(self::class, 'parent_id');
+    }
+
+    public function getImageAttribute(): array|null|string
+    {
+        return $this->getMedia('image')->map(function ($mediaObject) {
+            return $mediaObject->getUrl();
+        })->toArray()[0] ?? null;
     }
 }
