@@ -1,0 +1,15 @@
+type Brand {
+    id: Int
+    name: String
+    slug: String
+    link: String
+    image: String
+}
+
+input BrandInput {
+    slug: String
+}
+
+extend type Query {
+    brand(input: BrandInput @spread): Brand @field(resolver: "Modules\\Products\\GraphQL\\Queries\\Brand")
+}

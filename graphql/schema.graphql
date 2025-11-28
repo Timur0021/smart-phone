@@ -4,3 +4,4 @@
 #import ../modules/Blocks/GraphQL/schema/blocks.graphql
 #import ../modules/SiteSettings/GraphQL/schema/settings.graphql
 #import ../modules/Request/GraphQL/schema/request.graphql
+#import ../modules/Products/GraphQL/schema/products.graphql
