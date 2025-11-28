@@ -2,6 +2,7 @@
 
 namespace Modules\Products\Filament\Resources;
 
+use Filament\Resources\Concerns\Translatable;
 use Modules\Products\Filament\Forms\BrandForm;
 use Modules\Products\Filament\Resources\BrandResource\Pages;
 use Modules\Products\Filament\Resources\BrandResource\RelationManagers;
@@ -17,6 +18,8 @@ use Modules\Products\Models\Brand;
 
 class BrandResource extends Resource
 {
+    use Translatable;
+
     protected static ?string $model = Brand::class;
 
     protected static ?string $navigationIcon = 'fas-web-awesome';
