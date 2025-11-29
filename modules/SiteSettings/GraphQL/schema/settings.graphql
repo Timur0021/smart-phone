@@ -5,6 +5,7 @@ type Bootstrap {
     sidebars:[Sidebar]
     words: [Words]
     product_categories: [CategoryShort]
+    brands: [Brand]
 }
 type TextInSite {
     text: String

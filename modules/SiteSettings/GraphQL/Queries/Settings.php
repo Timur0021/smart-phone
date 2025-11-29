@@ -6,6 +6,7 @@ use Modules\Pages\Enums\FeedbackStatus;
 use Modules\Pages\Models\Feedback;
 use Modules\Pages\Models\Footer;
 use Modules\Pages\Models\Sidebar;
+use Modules\Products\Models\Brand;
 use Modules\Products\Models\Category;
 use Modules\SiteSettings\Models\Setting;
 use Modules\SiteSettings\Models\TextInSite;
@@ -54,6 +55,13 @@ class Settings
             ->orderBy('id')
             ->get();
 
+        $brands = Brand::query()
+            ->where('active', true)
+            ->latest('created_at')
+            ->take(6)
+            ->get();
+
+
         $words = Word::query()
             ->where('active', true)
             ->orderBy('sort_order')
@@ -68,6 +76,7 @@ class Settings
             'footers' => $footers,
             'sidebars' => $sidebars,
             'words' => $words,
+            'brands' => $brands,
         ];
     }
 }

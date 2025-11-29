@@ -15,6 +15,7 @@ type Brand {
     slug: String
     link: String
     image: String
+    active: Boolean
 }
 
 input BrandInput {
