@@ -1,3 +1,14 @@
+type Category {
+    id: Int
+    name: String
+    slug: String
+    image: String
+    parent: Category
+    children: [Category]
+    active: Boolean
+    will_be_soon: Boolean
+}
+
 type Brand {
     id: Int
     name: String
