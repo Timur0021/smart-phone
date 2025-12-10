@@ -61,13 +61,11 @@ class Settings
             ->take(6)
             ->get();
 
-
         $words = Word::query()
             ->where('active', true)
             ->orderBy('sort_order')
             ->orderBy('id')
             ->get();
-
 
         return [
             'text_in_site' => $text_in_site,

@@ -18,10 +18,25 @@ type Brand {
     active: Boolean
 }
 
+type BrandsWithLetters {
+    letter: String
+    brands: [Brand]
+}
+
+type BrandsData {
+    letters: [String]
+    data: [BrandsWithLetters]
+}
+
 input BrandInput {
     slug: String
 }
 
+input BrandsInput {
+    search: String
+}
+
 extend type Query {
     brand(input: BrandInput @spread): Brand @field(resolver: "Modules\\Products\\GraphQL\\Queries\\Brand")
+    brands(input: BrandsInput @spread): BrandsData @field(resolver: "Modules\\Products\\GraphQL\\Queries\\Brands")
 }

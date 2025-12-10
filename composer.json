@@ -7,6 +7,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.3",
+        "ext-intl": "*",
         "archilex/filament-toggle-icon-column": "^3.2",
         "awcodes/filament-tiptap-editor": "^3.5",
         "bezhansalleh/filament-shield": "^3.9",
