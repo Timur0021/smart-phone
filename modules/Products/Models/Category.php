@@ -35,6 +35,16 @@ class Category extends Model implements HasMedia
         'name',
     ];
 
+    public function getOrderColumn(): string
+    {
+        return 'sort_order';
+    }
+
+    public function getParentColumn(): string
+    {
+        return 'parent_id';
+    }
+
     public function getSlugOptions(): SlugOptions
     {
         return SlugOptions::create()
@@ -54,12 +64,12 @@ class Category extends Model implements HasMedia
 
     public function parent(): BelongsTo
     {
-        return $this->belongsTo(self::class, 'parent_id');
+        return $this->belongsTo(self::class, 'parent_id')->orderBy('sort_order');
     }
 
     public function children(): HasMany
     {
-        return $this->hasMany(self::class, 'parent_id');
+        return $this->hasMany(self::class, 'parent_id')->orderBy('sort_order');
     }
 
     public function getImageAttribute(): array|null|string

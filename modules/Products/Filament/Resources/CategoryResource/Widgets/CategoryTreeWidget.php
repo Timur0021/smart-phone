@@ -13,11 +13,11 @@ class CategoryTreeWidget extends TreeWidget
 
     protected static int $maxDepth = 3;
 
-    protected static ?string $parentColumn = null;
+    protected static ?string $parentColumn = 'parent_id';
+
+    protected static ?string $sortColumn = 'sort_order';
 
     protected ?string $treeTitle = 'Категорії';
-
-    protected bool $enableTreeTitle = true;
 
     protected function getFormSchema(): array
     {
