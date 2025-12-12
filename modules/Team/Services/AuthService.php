@@ -11,7 +11,6 @@ use Throwable;
 class AuthService
 {
     /**
-     *
      * @var UserService
      */
     protected UserService $userService;

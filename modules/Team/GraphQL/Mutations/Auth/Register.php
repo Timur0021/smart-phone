@@ -8,13 +8,11 @@ use Modules\Team\Services\AuthService;
 class Register
 {
     /**
-     *
      * @var AuthService
      */
     protected AuthService $authService;
 
     /**
-     *
      * @return void
      */
     public function __construct(AuthService $authService)

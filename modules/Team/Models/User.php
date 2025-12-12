@@ -38,8 +38,6 @@ class User extends Authenticatable implements HasMedia, HasAvatar
         'email_verified_at',
         'remember_token',
         'parents_data',
-        'ip',
-        'user_agent',
         'remember_me',
         'i_agree',
         'avatar_url',
@@ -69,7 +67,18 @@ class User extends Authenticatable implements HasMedia, HasAvatar
         ];
     }
 
-    public function getImageAttribute()
+    public function branch(): BelongsTo
+    {
+        return $this->belongsTo(Branch::class, 'branch_id');
+    }
+
+    public function getFilamentAvatarUrl(): ?string
+    {
+        $avatarColumn = config('filament-edit-profile.avatar_column', 'avatar_url');
+        return $this->$avatarColumn ? Storage::url($this->$avatarColumn) : null;
+    }
+
+    public function getImageAttribute(): array|null|string
     {
         return $this->getMedia('image')->map(function ($mediaObject) {
             return $mediaObject->getUrl();
@@ -79,16 +88,5 @@ class User extends Authenticatable implements HasMedia, HasAvatar
     public function getRoleAttribute(): ?string
     {
         return $this->roles()->first()?->name;
-    }
-
-    public function getFilamentAvatarUrl(): ?string
-    {
-        $avatarColumn = config('filament-edit-profile.avatar_column', 'avatar_url');
-        return $this->$avatarColumn ? Storage::url($this->$avatarColumn) : null;
-    }
-
-    public function branch(): BelongsTo
-    {
-        return $this->belongsTo(Branch::class, 'branch_id');
     }
 }

@@ -2,11 +2,13 @@
 
 namespace Modules\Team\Services;
 
+use App\Models\TemporaryFile;
 use Carbon\Carbon;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Modules\Team\Models\User;
+use Exception;
 
 class UserService
 {
@@ -38,5 +40,25 @@ class UserService
         return User::query()
             ->where('email', $email)
             ->exists();
+    }
+
+    /**
+     * @throws Exception
+     */
+    public function updateUser(User $user, array $data): User
+    {
+        if (!empty($data['password'])) {
+            if (Hash::check($data['password'], $user->password)) {
+                throw new Exception('Новий пароль не може бути таким самим, як поточний');
+            }
+
+            $data['password'] = Hash::make($data['password']);
+        }
+
+        if (isset($data['image'])) {
+            TemporaryFile::transferFilesTo($user, $data['image'], 'image');
+        }
+
+        $user->update($data);
     }
 }

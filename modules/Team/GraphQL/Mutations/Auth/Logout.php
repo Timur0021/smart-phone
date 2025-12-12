@@ -7,7 +7,6 @@ use Modules\Team\Services\AuthService;
 class Logout
 {
     /**
-     *
      * @var AuthService
      */
     protected AuthService $authService;
