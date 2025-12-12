@@ -38,5 +38,5 @@ input BrandsInput {
 
 extend type Query {
     brand(input: BrandInput @spread): Brand @field(resolver: "Modules\\Products\\GraphQL\\Queries\\Brand")
-    brands(input: BrandsInput @spread): BrandsData @field(resolver: "Modules\\Products\\GraphQL\\Queries\\Brands")
+    brands: BrandsData @field(resolver: "Modules\\Products\\GraphQL\\Queries\\Brands")
 }
