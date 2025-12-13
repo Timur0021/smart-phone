@@ -9,4 +9,5 @@ return [
     \Modules\Pages\Providers\PageServiceProvider::class,
     \Modules\SiteSettings\Providers\SiteSettingsServiceProvider::class,
     \Modules\Products\Providers\ProductServiceProvider::class,
+    \Modules\Notification\Providers\NotificationServiceProvider::class,
 ];
