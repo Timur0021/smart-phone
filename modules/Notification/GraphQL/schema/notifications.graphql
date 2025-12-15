@@ -1,0 +1,12 @@
+type Subscribe {
+    id: Int
+    email: String
+}
+
+input SubscribeInput {
+    email: String!
+}
+
+extend type Mutation {
+    subscribe(input: SubscribeInput @spread): Response @field(resolver: "Modules\\Notification\\GraphQL\\Mutations\\Subscribe")
+}
