@@ -25,18 +25,25 @@ class Subscribe
                 throw new Error('Емейл не введений');
             }
 
-            SubscribeModel::query()
-                ->firstOrCreate([
-                    'email' => $email
-                ]);
+            $subscribe = SubscribeModel::query()->firstOrNew(['email' => $email]);
 
-            DB::commit();
+            if (!$subscribe->exists) {
+                $subscribe->save();
+                DB::commit();
 
-            return [
-                'status' => 'success',
-                'message' => 'Ви успішно підписались'
-            ];
+                return [
+                    'status' => 'success',
+                    'message' => 'Ви успішно підписались'
+                ];
+            } else {
+                DB::rollBack();
+                return [
+                    'status' => 'error',
+                    'message' => 'Ви вже підписані на розсилку'
+                ];
+            }
         } catch (Error $error) {
+            DB::rollBack();
             throw new Error($error->getMessage());
         }
     }
