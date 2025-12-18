@@ -33,7 +33,7 @@ class Subscribe
             DB::commit();
 
             return [
-                'status' => 'Успіх!',
+                'status' => 'success',
                 'message' => 'Ви успішно підписались'
             ];
         } catch (Error $error) {
