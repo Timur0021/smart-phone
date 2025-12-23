@@ -50,7 +50,7 @@ input UpdatePersonalDataInput {
 }
 
 type Query {
-    hello: String @field(resolver: "Modules\\Team\\GraphQL\\Queries\\Hello")
+    currentUser: User! @field(resolver: "Modules\\Team\\GraphQL\\Queries\\GetCurrentUser")
 }
 
 extend type Mutation {
