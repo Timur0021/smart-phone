@@ -55,10 +55,12 @@ class UserService
             $data['password'] = Hash::make($data['password']);
         }
 
+        $user->update($data);
+
         if (isset($data['image'])) {
             TemporaryFile::transferFilesTo($user, $data['image'], 'image');
         }
 
-        $user->update($data);
+        return $user;
     }
 }
