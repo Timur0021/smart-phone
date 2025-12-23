@@ -28,13 +28,13 @@ class UpdatePersonalData
      * @throws Error
      * @throws Exception
      */
-    public function __invoke(null $_, array $args): void
+    public function __invoke(null $_, array $args): User
     {
         try {
             /** @var User $user */
             $user = auth()->user();
 
-            $this->userService->updateUser($user, $args);
+            return $this->userService->updateUser($user, $args);
         } catch (Error $error) {
             throw new Error($error->getMessage());
         }
