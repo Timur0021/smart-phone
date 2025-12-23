@@ -6,9 +6,18 @@ type User {
     email: String
     password: String
     image: String
+    image_object: Media
     remember_me: Boolean
     i_agree: Boolean
     branch: Branch
+    created_at: DateTimeUtc
+}
+
+type Media {
+    id: Int
+    file_name: String
+    size: Int
+    mime_type: String
     created_at: DateTimeUtc
 }
 

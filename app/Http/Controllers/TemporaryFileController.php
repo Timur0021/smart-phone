@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\TemporaryFile;
 use Illuminate\Http\Request;
 use Exception;
+use Illuminate\Support\Facades\Log;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class TemporaryFileController extends Controller
 {
@@ -37,20 +39,17 @@ class TemporaryFileController extends Controller
     public function delete(Request $request)
     {
         try {
-            $request->validate([
-                'file_id' => 'exists:temporary_files,id'
-            ]);
-            $file = TemporaryFile::query()->find($request->file_id);
-            $file->clearMediaCollection('temporary_files');
-            $file->delete();
+            $media = Media::query()->findOrFail($request->file_id);
+            $media->delete();
+
             return response()->json([
                 'status' => 'success',
-                'error' => null
-            ], 200);
-        } catch (\Exception $ex) {
+                'error' => null,
+            ]);
+        } catch (\Throwable $e) {
             return response()->json([
                 'status' => 'error',
-                'error' => $ex->getMessage()
+                'error' => $e->getMessage(),
             ], 422);
         }
     }

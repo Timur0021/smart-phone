@@ -14,6 +14,7 @@ use Laravel\Sanctum\HasApiTokens;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Permission\Traits\HasRoles;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class User extends Authenticatable implements HasMedia, HasAvatar
 {
@@ -83,6 +84,11 @@ class User extends Authenticatable implements HasMedia, HasAvatar
         return $this->getMedia('image')->map(function ($mediaObject) {
             return $mediaObject->getUrl();
         })->toArray()[0] ?? null;
+    }
+
+    public function getImageObjectAttribute(): Media|array|null|string
+    {
+        return $this->getFirstMedia('image');
     }
 
     public function getRoleAttribute(): ?string
