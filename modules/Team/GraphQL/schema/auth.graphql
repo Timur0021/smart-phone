@@ -5,6 +5,7 @@ type User {
     phone: String
     email: String
     password: String
+    image: String
     remember_me: Boolean
     i_agree: Boolean
     branch: Branch
