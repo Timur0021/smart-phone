@@ -27,11 +27,11 @@ class BlogCategoryResource extends Resource
 
     protected static ?string $navigationGroup = 'Блог';
 
-    protected static ?string $navigationLabel = 'Категорії';
+    protected static ?string $navigationLabel = 'Категорії статей';
 
-    protected static ?string $label = 'Категорії';
+    protected static ?string $label = 'Категорії статей';
 
-    protected static ?string $pluralModelLabel = 'Категорії';
+    protected static ?string $pluralModelLabel = 'Категорії статей';
 
     public static function form(Form $form): Form
     {
