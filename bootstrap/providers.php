@@ -10,4 +10,5 @@ return [
     \Modules\SiteSettings\Providers\SiteSettingsServiceProvider::class,
     \Modules\Products\Providers\ProductServiceProvider::class,
     \Modules\Notification\Providers\NotificationServiceProvider::class,
+    \Modules\Blogs\Providers\BlogServiceProvider::class,
 ];
