@@ -3,27 +3,45 @@
 namespace Modules\Blogs\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 use Spatie\Translatable\HasTranslations;
 
-class BlogCategory extends Model
+class Blog extends Model
 {
     use HasTranslations;
     use HasSlug;
 
-    protected $table = 'blog_categories';
+    protected $table = 'blogs';
 
     protected $fillable = [
         'name',
         'slug',
-        'color',
+        'short_description',
+        'description',
+        'sort_order',
+        'category_id',
         'active',
+        'published_at',
+        'meta_title',
+        'meta_description',
+    ];
+
+    protected $casts = [
+        'published_at' => 'date',
+    ];
+
+    protected $attributes = [
+        'view_count' => 0
     ];
 
     public array $translatable = [
         'name',
+        'short_description',
+        'description',
+        'meta_title',
+        'meta_description',
     ];
 
     public function getSlugOptions(): SlugOptions
@@ -36,8 +54,8 @@ class BlogCategory extends Model
             ->doNotGenerateSlugsOnUpdate();
     }
 
-    public function blogs(): HasMany
+    public function category(): BelongsTo
     {
-        return $this->hasMany(Blog::class, 'category_id');
+        return $this->belongsTo(BlogCategory::class, 'category_id');
     }
 }
