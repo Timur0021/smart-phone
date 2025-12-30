@@ -33,7 +33,7 @@ class Blog extends Model
     ];
 
     protected $attributes = [
-        'view_count' => 0
+        'view_count' => 0,
     ];
 
     public array $translatable = [
