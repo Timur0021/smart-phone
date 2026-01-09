@@ -4,13 +4,17 @@ namespace Modules\Blogs\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 use Spatie\Translatable\HasTranslations;
 
-class Blog extends Model
+class Blog extends Model implements HasMedia
 {
     use HasTranslations;
+    use InteractsWithMedia;
     use HasSlug;
 
     protected $table = 'blogs';
@@ -54,8 +58,22 @@ class Blog extends Model
             ->doNotGenerateSlugsOnUpdate();
     }
 
+    public function registerMediaConversions(Media $media = null): void
+    {
+        $this->addMediaConversion('webp')
+            ->format('webp')
+            ->nonQueued();
+    }
+
     public function category(): BelongsTo
     {
         return $this->belongsTo(BlogCategory::class, 'category_id');
+    }
+
+    public function getImageAttribute(): array|null|string
+    {
+        return $this->getMedia('image')->map(function ($mediaObject) {
+            return $mediaObject->getUrl('webp');
+        })->toArray()[0] ?? null;
     }
 }

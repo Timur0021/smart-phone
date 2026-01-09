@@ -75,7 +75,7 @@ class Category extends Model implements HasMedia
     public function getImageAttribute(): array|null|string
     {
         return $this->getMedia('image')->map(function ($mediaObject) {
-            return $mediaObject->getUrl();
+            return $mediaObject->getUrl('webp');
         })->toArray()[0] ?? null;
     }
 }
