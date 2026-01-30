@@ -17,3 +17,29 @@ type BlogCategory {
     color: String
     active: Boolean
 }
+
+type BlogResponse {
+    data: [Blog]
+    pagination: [PaginatorInfo]
+    filters: [BlogFilters]
+}
+
+type BlogFilters {
+    id: Int
+    name: String
+    slug: String
+}
+
+input BlogInput {
+    slug: String
+}
+
+input BlogsInput {
+    page: Int
+    limit: Int
+    category_slug: String
+}
+
+extend type Query {
+    blog(input: BlogInput @spread): Blog @field(resolver: "Modules\\Blogs\\GraphQL\\Queries\\Blog")
+}
