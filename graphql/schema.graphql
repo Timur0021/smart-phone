@@ -6,3 +6,4 @@
 #import ../modules/Request/GraphQL/schema/request.graphql
 #import ../modules/Products/GraphQL/schema/products.graphql
 #import ../modules/Notification/GraphQL/schema/notifications.graphql
+#import ../modules/Blogs/GraphQL/schema/blog.graphql

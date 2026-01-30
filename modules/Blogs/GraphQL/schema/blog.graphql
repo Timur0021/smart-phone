@@ -1,0 +1,19 @@
+type Blog {
+    name: String
+    slug: String
+    short_description: String
+    description: String
+    category: BlogCategory
+    active: Boolean
+    published_at: DateTimeUtc
+    meta_title: String
+    meta_description: String
+    view_count: Int
+}
+
+type BlogCategory {
+    name: String
+    slug: String
+    color: String
+    active: Boolean
+}
