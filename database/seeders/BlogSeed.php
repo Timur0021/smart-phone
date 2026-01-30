@@ -49,7 +49,6 @@ class BlogSeed extends Seeder
                     ],
                 ]);
 
-            // Завантажуємо стабільне головне фото через placehold.co
             $tmpPath = storage_path('app/tmp_blog_' . Str::random(8) . '.png');
 
             $response = Http::timeout(10)->get('https://placehold.co/1200x800/png');
@@ -134,15 +133,16 @@ class BlogSeed extends Seeder
                 $img = "https://loremflickr.com/568/325/technology,event?random=" . rand(1, 9999);
 
                 $html .= '
-<p>
-    <img
-        style="float: ' . $float . '; margin: ' . $margin . ';"
-        src="' . $img . '"
-        alt=""
-        width="568"
-        height="325"
-    />
-</p>';
+                    <p>
+                        <img
+                            style="float: ' . $float . '; margin: ' . $margin . ';"
+                            src="' . $img . '"
+                            alt=""
+                            width="568"
+                            height="325"
+                        />
+                    </p>'
+                ;
             }
         }
 
