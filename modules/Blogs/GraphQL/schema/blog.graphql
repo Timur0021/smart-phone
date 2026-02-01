@@ -42,4 +42,5 @@ input BlogsInput {
 
 extend type Query {
     blog(input: BlogInput @spread): Blog @field(resolver: "Modules\\Blogs\\GraphQL\\Queries\\Blog")
+    blogs(input: BlogsInput @spread): BlogResponse @field(resolver: "Modules\\Blogs\\GraphQL\\Queries\\Blogs")
 }
