@@ -27,7 +27,6 @@ class Blogs
             $categoryQuery = BlogCategory::query()
                 ->where('active', true);
 
-
             if ($categorySlug) {
                 $category = (clone $categoryQuery)
                     ->where('slug', $categorySlug)
