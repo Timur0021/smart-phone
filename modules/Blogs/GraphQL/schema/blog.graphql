@@ -1,6 +1,7 @@
 type Blog {
     name: String
     slug: String
+    image: String
     short_description: String
     description: String
     category: BlogCategory
