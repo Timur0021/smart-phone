@@ -21,7 +21,7 @@ type BlogCategory {
 
 type BlogResponse {
     data: [Blog]
-    pagination: [PaginatorInfo]
+    pagination: PaginatorInfo
     filters: [BlogFilters]
 }
 
