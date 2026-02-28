@@ -42,7 +42,6 @@ class Blogs
             $data = $q->paginate($limit, ['*'], 'page', $page);
             $filters = (clone $categoryQuery)
                 ->where('active', true)
-                ->orderBy('sort')
                 ->orderBy('id')
                 ->get();
 
