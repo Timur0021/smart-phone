@@ -16,7 +16,6 @@ class BlogTable
     {
         return $table
             ->defaultSort('published_at', 'desc')
-            ->defaultPaginationPageOption(25)
             ->columns([
                 TextColumn::make('id')
                     ->label('ID')
