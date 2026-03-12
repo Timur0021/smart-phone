@@ -52,15 +52,13 @@ class BlockResource extends Resource
                             ->label('Зображення')
                             ->conversion('webp')
                             ->collection('image'),
-//                        Forms\Components\Select::make('slider_id')
-//                            ->label('Слайдер')
-//                            ->relationship('slider', 'name', fn($query) => $query->where('status', true)),
                         Forms\Components\TextInput::make('name')
                             ->label('Назва')
                             ->hidden(fn($operation) => $operation === 'create')
                             ->required(),
                         Forms\Components\Select::make('template_block_id')
                             ->label('Шаблон')
+                            ->native(false)
                             ->relationship(
                                 name: 'template',
                                 titleAttribute: 'name',
