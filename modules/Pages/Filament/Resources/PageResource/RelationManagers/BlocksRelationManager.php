@@ -43,6 +43,7 @@ class BlocksRelationManager extends RelationManager
             ->headerActions([
                 LocaleSwitcher::make(),
                 AttachAction::make()
+                    ->color('info')
                     ->preloadRecordSelect(),
             ])
             ->actions([
