@@ -12,9 +12,13 @@ class CountUsers extends BaseWidget
 
     protected function getStats(): array
     {
-        $superAdminCounts = User::whereHas('roles', fn($query) => $query->where('name', 'super_admin'))->count();
-        $adminCount = User::whereHas('roles', fn($query) => $query->where('name', 'admin'))->count();
-        $studentCount = User::whereHas('roles', fn($query) => $query->where('name', 'student'))->count();
+        $superAdminCounts = User::query()
+            ->whereHas('roles', fn($query) => $query->where('name', 'super_admin'))
+            ->count();
+
+        $adminCount = User::query()
+            ->whereHas('roles', fn($query) => $query->where('name', 'admin'))
+            ->count();
 
         return [
             Stat::make('Супер адміністратори', $superAdminCounts)
@@ -24,10 +28,11 @@ class CountUsers extends BaseWidget
             Stat::make('Адміністратори', $adminCount)
                 ->description('Загальна кількість адміністраторів')
                 ->icon('heroicon-o-user'),
-
-            Stat::make('Студенти', $studentCount)
-                ->description('Загальна кількість студентів')
-                ->icon('fas-graduation-cap')
         ];
+    }
+
+    protected function getColumns(): int
+    {
+        return 2;
     }
 }
