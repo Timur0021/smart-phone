@@ -31,7 +31,7 @@ class BlogTable
                     ->url(fn($record) => "http://localhost:5173/blogs/{$record->slug}")
                     ->openUrlInNewTab()
                     ->searchable(query: function ($query, $search) {
-                        $query->whereRaw('LOWER(title) LIKE ?', ['%' . strtolower($search) . '%']);
+                        $query->whereRaw('LOWER(name) LIKE ?', ['%' . strtolower($search) . '%']);
                     })
                     ->limit(50),
                 TextColumn::make('views_count')
