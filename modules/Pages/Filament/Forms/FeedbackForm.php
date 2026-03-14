@@ -36,6 +36,7 @@ class FeedbackForm
                             ->type('email'),
                         Select::make('status')
                             ->label('Статус Відгуку')
+                            ->native(false)
                             ->options(FeedbackStatus::class),
                         Textarea::make('message')
                             ->label('Повідомлення')
