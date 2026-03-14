@@ -4,6 +4,7 @@ namespace Modules\Pages\Filament\Forms;
 
 use Carbon\Carbon;
 use Filament\Forms\Components\DateTimePicker;
+use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\Textarea;
@@ -19,35 +20,42 @@ class FeedbackForm
     {
         return $form
             ->schema([
-                TextInput::make('first_name')
-                    ->label('Ім\'я')
-                    ->required(),
-                Select::make('status')
-                    ->label('Статус Відгуку')
-                    ->options(FeedbackStatus::class),
-                Textarea::make('message')
-                    ->label('Повідомлення')
-                    ->columnSpanFull()
-                    ->required(),
-                DateTimePicker::make('created_at')
-                    ->label('Дата створення')
-                    ->required()
-                    ->native(false)
-                    ->formatStateUsing(
-                        fn ($state) => Carbon::parse($state)
-                            ->timezone('Europe/Kyiv')
-                            ->format('Y-m-d H:i:s')
-                    ),
-                Rating::make('mark')
-                    ->label('Оцінка')
-                    ->theme(RatingTheme::HalfStars)
-                    ->size('xl')
-                    ->stars(5),
-                SpatieMediaLibraryFileUpload::make('image')
-                    ->label('Фото')
-                    ->columnSpanFull()
-                    ->conversion('webp')
-                    ->collection('image'),
+                Section::make('Головна інформація')
+                    ->columns()
+                    ->schema([
+                        TextInput::make('first_name')
+                            ->label('Ім\'я')
+                            ->required(),
+                        TextInput::make('phone')
+                            ->label('Телефон')
+                            ->type('tel')
+                            ->mask('+380(99)9999999')
+                            ->placeholder('+380(__)_______'),
+                        TextInput::make('email')
+                            ->label('Email')
+                            ->type('email'),
+                        Select::make('status')
+                            ->label('Статус Відгуку')
+                            ->options(FeedbackStatus::class),
+                        Textarea::make('message')
+                            ->label('Повідомлення')
+                            ->columnSpanFull()
+                            ->required(),
+                        DateTimePicker::make('created_at')
+                            ->label('Дата створення')
+                            ->required()
+                            ->native(false)
+                            ->formatStateUsing(
+                                fn ($state) => Carbon::parse($state)
+                                    ->timezone('Europe/Kyiv')
+                                    ->format('Y-m-d H:i:s')
+                            ),
+                        Rating::make('mark')
+                            ->label('Оцінка')
+                            ->theme(RatingTheme::HalfStars)
+                            ->size('xl')
+                            ->stars(5),
+                    ]),
             ]);
     }
 }

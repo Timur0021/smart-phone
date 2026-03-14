@@ -11,15 +11,16 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\Translatable\HasTranslations;
 
-class Feedback extends Model implements HasMedia
+class Feedback extends Model
 {
     use HasTranslations;
-    use InteractsWithMedia;
 
     protected $table = 'feedback';
 
     protected $fillable = [
         'first_name',
+        'phone',
+        'email',
         'message',
         'status',
         'mark',
@@ -34,19 +35,6 @@ class Feedback extends Model implements HasMedia
         'first_name',
         'message',
     ];
-
-    public function registerMediaConversions(Media $media = null): void
-    {
-        $this->addMediaConversion('webp')
-            ->format('webp')->nonQueued();
-    }
-
-    public function getImageAttribute(): array|null|string
-    {
-        return $this->getMedia('image')->map(function (Media $mediaObject) {
-            return $mediaObject->getUrl('webp');
-        })->toArray()[0] ?? null;
-    }
 
     public function pages(): BelongsToMany
     {
