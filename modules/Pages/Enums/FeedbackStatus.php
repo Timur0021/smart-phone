@@ -9,13 +9,13 @@ use Filament\Support\Contracts\HasLabel;
 enum FeedbackStatus: string implements HasLabel, HasColor, HasIcon
 {
     case PUBLISHED = 'published';
-    case NOTPUBLISHED = 'not_published';
+    case NOT_PUBLISHED = 'not_published';
 
     public function getLabel(): ?string
     {
         return match ($this) {
             self::PUBLISHED => 'опубліковано',
-            self::NOTPUBLISHED => 'не опубліковано',
+            self::NOT_PUBLISHED => 'не опубліковано',
         };
     }
 
@@ -23,7 +23,7 @@ enum FeedbackStatus: string implements HasLabel, HasColor, HasIcon
     {
         return match ($this) {
             self::PUBLISHED => 'success',
-            self::NOTPUBLISHED => 'danger',
+            self::NOT_PUBLISHED => 'danger',
         };
     }
 
@@ -31,7 +31,7 @@ enum FeedbackStatus: string implements HasLabel, HasColor, HasIcon
     {
         return match ($this) {
             self::PUBLISHED => 'fas-check',
-            self::NOTPUBLISHED => 'fas-xmark',
+            self::NOT_PUBLISHED => 'fas-xmark',
         };
     }
 

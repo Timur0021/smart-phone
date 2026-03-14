@@ -6,14 +6,16 @@ use GraphQL\Error\Error;
 use Illuminate\Support\Facades\DB;
 use Modules\Pages\Enums\FeedbackStatus;
 use Modules\Pages\Models\Feedback;
+use Throwable;
 
 class CreateFeedback
 {
     /**
      * @param array<string, mixed> $args
      * @throws Error
+     * @throws Throwable
      */
-    public function __invoke(null $_, array $args)
+    public function __invoke(null $_, array $args): array
     {
         DB::beginTransaction();
 
@@ -25,8 +27,10 @@ class CreateFeedback
             Feedback::query()
                 ->create([
                     'first_name' => $args['first_name'],
+                    'phone' => $args['phone'] ?? null,
+                    'email' => $args['email'] ?? null,
                     'message' => $args['message'] ?? null,
-                    'status' => FeedbackStatus::NOTPUBLISHED->value,
+                    'status' => FeedbackStatus::NOT_PUBLISHED->value,
                     'mark' => $args['mark'],
                 ]);
 
