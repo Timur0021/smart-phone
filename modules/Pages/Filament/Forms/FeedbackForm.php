@@ -40,6 +40,7 @@ class FeedbackForm
                         Textarea::make('message')
                             ->label('Повідомлення')
                             ->columnSpanFull()
+                            ->rows(7)
                             ->required(),
                         DateTimePicker::make('created_at')
                             ->label('Дата створення')
