@@ -33,7 +33,11 @@ class FeedbackTable
                     ->sortable(),
                 TextColumn::make('created_at')
                     ->label('Створено')
-                    ->formatStateUsing(fn($state) => Carbon::parse($state)->setTimezone('Europe/Kyiv')->format('Y-m-d H:i')),
+                    ->formatStateUsing(
+                        fn($state) => Carbon::parse($state)
+                            ->setTimezone('Europe/Kyiv')
+                            ->format('Y-m-d H:i')
+                    ),
             ])
             ->filters([
                 SelectFilter::make('status')
