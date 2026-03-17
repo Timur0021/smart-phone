@@ -17,6 +17,9 @@ return Application::configure(basePath: dirname(__DIR__))
             'graphql',
         ]);
     })
+    ->withSchedule(function (Schedule $schedule): void {
+        $schedule->command('telegram:add-users')->everyFiveMinutes();
+    })
     ->withExceptions(function (Exceptions $exceptions): void {
         //
     })->create();
