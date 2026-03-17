@@ -15,7 +15,7 @@ class UserService
     public function createUser(array $data): User|Authenticatable
     {
         return User::query()
-            ->create([
+            ->create(array_merge([
                 'name' => $data['name'] ?? '',
                 'last_name' => $data['last_name'] ?? '',
                 'email' => $data['email'] ?? '',
@@ -25,7 +25,7 @@ class UserService
                 'email_verified_at' => Carbon::now(),
                 'password' => isset($data['password']) ? Hash::make($data['password']) : null,
                 'remember_token' => $data['remember_token'] ?? Str::random(10),
-            ]);
+            ], $data));
     }
 
     public function getUserByEmail(string $email): ?User

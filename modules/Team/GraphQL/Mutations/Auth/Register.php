@@ -3,6 +3,7 @@
 namespace Modules\Team\GraphQL\Mutations\Auth;
 
 use GraphQL\Error\Error;
+use Throwable;
 use Modules\Team\Services\AuthService;
 
 class Register
@@ -23,9 +24,10 @@ class Register
     /**
      * @param null $_
      * @param array<string, mixed> $args
-     * @throws
+     * @return array
+     * @throws Throwable
      */
-    public function __invoke(null $_, array $args)
+    public function __invoke(null $_, array $args): array
     {
         return $this->authService->register($args);
     }

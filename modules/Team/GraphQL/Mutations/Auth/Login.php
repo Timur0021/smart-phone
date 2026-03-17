@@ -2,7 +2,9 @@
 
 namespace Modules\Team\GraphQL\Mutations\Auth;
 
+use GraphQL\Error\Error;
 use Modules\Team\Services\AuthService;
+use Throwable;
 
 class Login
 {
@@ -22,9 +24,11 @@ class Login
     /**
      * @param null $_
      * @param array<string, mixed> $args
-     * @throws
+     * @return array|null
+     * @throws Error
+     * @throws Throwable
      */
-    public function __invoke(null $_, array $args)
+    public function __invoke(null $_, array $args): ?array
     {
         return $this->authService->login($args);
     }

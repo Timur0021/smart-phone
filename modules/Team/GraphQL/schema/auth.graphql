@@ -59,6 +59,10 @@ input UpdatePersonalDataInput {
     password: String
 }
 
+input GoogleAuthInput {
+    token: String! @rules(apply: ["required", "string"])
+}
+
 type Query {
     currentUser: User! @field(resolver: "Modules\\Team\\GraphQL\\Queries\\GetCurrentUser")
 }
@@ -67,6 +71,8 @@ extend type Mutation {
     register(input: RegisterInput @spread): RegisterResponse @field(resolver: "Modules\\Team\\GraphQL\\Mutations\\Auth\\Register")
     login(input: LoginInput @spread): RegisterResponse @field(resolver: "Modules\\Team\\GraphQL\\Mutations\\Auth\\Login")
     logout: Response @guard @field(resolver: "Modules\\Team\\GraphQL\\Mutations\\Auth\\Logout")
+
+    registerGoogle(input: GoogleAuthInput! @spread): RegisterResponse @field(resolver: "Modules\\Team\\GraphQL\\Mutations\\Auth\\RegisterGoogle")
 
     updatePersonalData(input: UpdatePersonalDataInput @spread): User @field(resolver: "Modules\\Team\\GraphQL\\Mutations\\Settings\\UpdatePersonalData") @guard
 }

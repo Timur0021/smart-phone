@@ -3,8 +3,9 @@
 namespace Modules\Team\GraphQL\Mutations\Auth;
 
 use Modules\Team\Services\AuthService;
+use Throwable;
 
-class Logout
+class RegisterGoogle
 {
     /**
      * @var AuthService
@@ -20,12 +21,12 @@ class Logout
     }
 
     /**
-     * @param null $_
-     * @param array<string, mixed> $args
-     * @return array
+     * @param array{}
+     * $args
+     * @throws Throwable
      */
     public function __invoke(null $_, array $args): array
     {
-        return $this->authService->logout();
+        return $this->authService->registerGoogle($args);
     }
 }

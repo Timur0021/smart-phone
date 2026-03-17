@@ -2,10 +2,13 @@
 
 namespace Modules\Team\Services;
 
+use Carbon\Carbon;
 use GraphQL\Error\Error;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
+use Laravel\Socialite\Facades\Socialite;
 use Throwable;
 
 class AuthService
@@ -109,5 +112,51 @@ class AuthService
             'success' => true,
             'message' => 'Ви успішно вийшли з профіля!',
         ];
+    }
+
+    /**
+     * @throws Throwable
+     */
+    public function registerGoogle(array $args): array
+    {
+        DB::beginTransaction();
+
+        try {
+            $provider = Socialite::driver('google')->userFromToken($args['token']);
+
+            if (!$provider) {
+                throw new Error('Недійсний токен.');
+            }
+
+            if (!$provider->getEmail()) {
+                throw new Error('Не вдалося отримати email від Google. Авторизація неможлива.');
+            }
+
+            $user = $this->userService->getUserByEmail($provider->email);
+
+            if (!$user) {
+                $user = $this->userService->createUser([
+                    'name' => $provider->name,
+                    'email' => $provider->email,
+                    'email_verified_at' => Carbon::now(),
+                    'google_id' => $provider->id,
+                    'password' => null,
+                    'remember_token' => Str::random(10),
+                ]);
+            }
+
+            $user->assignRole('customer');
+            $token = $user->createToken('token')->plainTextToken;
+
+            DB::commit();
+
+            return [
+                'user' => $user,
+                'token' => $token,
+            ];
+        } catch (Error $error) {
+            DB::rollBack();
+            throw new Error($error->getMessage());
+        }
     }
 }
