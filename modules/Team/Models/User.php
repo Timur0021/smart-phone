@@ -2,6 +2,7 @@
 
 namespace Modules\Team\Models;
 
+use Carbon\Carbon;
 use Filament\Models\Contracts\HasAvatar;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -11,12 +12,13 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Storage;
 use Laravel\Sanctum\HasApiTokens;
+use Modules\Telegram\Contracts\TelegramInterface;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Permission\Traits\HasRoles;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class User extends Authenticatable implements HasMedia, HasAvatar
+class User extends Authenticatable implements HasMedia, HasAvatar, TelegramInterface
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory;
@@ -95,5 +97,28 @@ class User extends Authenticatable implements HasMedia, HasAvatar
     public function getRoleAttribute(): ?string
     {
         return $this->roles()->first()?->name;
+    }
+
+    public function adminUrl(): string
+    {
+        return config('app.url') . "/admin/users";
+    }
+
+    public function telegramTitle(): ?string
+    {
+        return 'Зареєструвався новий користувач';
+    }
+
+    public function telegramFields(): array
+    {
+        return [
+            "Ім'я"              => $this->name,
+            "Прізвище"          => $this->last_name,
+            "Пошта"             => "<a href='mailto:{$this->email}'>{$this->email}</a>",
+            "Телефон"           => $this->phone,
+            "Дата реаєстрації"  => Carbon::parse($this->created_at)
+                                            ->timezone('Europe/Kyiv')
+                                            ->format("Y-m-d H:i"),
+        ];
     }
 }
