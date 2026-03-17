@@ -38,7 +38,6 @@ class User extends Authenticatable implements HasMedia, HasAvatar, TelegramInter
         'email',
         'phone',
         'password',
-        'google_id',
         'email_verified_at',
         'remember_token',
         'parents_data',
