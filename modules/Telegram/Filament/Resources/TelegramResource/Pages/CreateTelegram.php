@@ -1,9 +1,9 @@
 <?php
 
-namespace Modules\SiteSettings\Filament\Resources\TelegramResource\Pages;
+namespace Modules\Telegram\Filament\Resources\TelegramResource\Pages;
 
 use Filament\Resources\Pages\CreateRecord;
-use Modules\SiteSettings\Filament\Resources\TelegramResource;
+use Modules\Telegram\Filament\Resources\TelegramResource;
 
 class CreateTelegram extends CreateRecord
 {

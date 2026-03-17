@@ -11,4 +11,5 @@ return [
     \Modules\Products\Providers\ProductServiceProvider::class,
     \Modules\Notification\Providers\NotificationServiceProvider::class,
     \Modules\Blogs\Providers\BlogServiceProvider::class,
+    \Modules\Telegram\Providers\TelegramServiceProvider::class,
 ];

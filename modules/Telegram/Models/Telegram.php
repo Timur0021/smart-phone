@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\SiteSettings\Models;
+namespace Modules\Telegram\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\SiteSettings\Filament\Resources;
+namespace Modules\Telegram\Filament\Resources;
 
 use Filament\Forms;
 use Filament\Forms\Components\TextInput;
@@ -9,7 +9,8 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Modules\SiteSettings\Models\Telegram;
+use Modules\Telegram\Filament\Resources;
+use Modules\Telegram\Models\Telegram;
 
 class TelegramResource extends Resource
 {
@@ -62,7 +63,6 @@ class TelegramResource extends Resource
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
-//                Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -81,7 +81,7 @@ class TelegramResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => TelegramResource\Pages\ListTelegram::route('/'),
+            'index' => Resources\TelegramResource\Pages\ListTelegram::route('/'),
 //            'create' => TelegramResource\Pages\CreateTelegram::route('/create'),
 //            'edit' => TelegramResource\Pages\EditTelegram::route('/{record}/edit'),
         ];

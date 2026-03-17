@@ -1,12 +1,12 @@
 <?php
 
-namespace Modules\SiteSettings\Policies;
+namespace Modules\Notification\Policies;
 
 use Modules\Team\Models\User;
-use Modules\SiteSettings\Models\Telegram;
+use Modules\Notification\Models\Subscribe;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class TelegramPolicy
+class SubscribePolicy
 {
     use HandlesAuthorization;
 
@@ -15,15 +15,15 @@ class TelegramPolicy
      */
     public function viewAny(User $user): bool
     {
-        return $user->can('view_any_telegram');
+        return $user->can('view_any_subscribe');
     }
 
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, Telegram $telegram): bool
+    public function view(User $user, Subscribe $subscribe): bool
     {
-        return $user->can('view_telegram');
+        return $user->can('view_subscribe');
     }
 
     /**
@@ -31,23 +31,23 @@ class TelegramPolicy
      */
     public function create(User $user): bool
     {
-        return $user->can('create_telegram');
+        return $user->can('create_subscribe');
     }
 
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, Telegram $telegram): bool
+    public function update(User $user, Subscribe $subscribe): bool
     {
-        return $user->can('update_telegram');
+        return $user->can('update_subscribe');
     }
 
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, Telegram $telegram): bool
+    public function delete(User $user, Subscribe $subscribe): bool
     {
-        return $user->can('delete_telegram');
+        return $user->can('delete_subscribe');
     }
 
     /**
@@ -55,15 +55,15 @@ class TelegramPolicy
      */
     public function deleteAny(User $user): bool
     {
-        return $user->can('delete_any_telegram');
+        return $user->can('delete_any_subscribe');
     }
 
     /**
      * Determine whether the user can permanently delete.
      */
-    public function forceDelete(User $user, Telegram $telegram): bool
+    public function forceDelete(User $user, Subscribe $subscribe): bool
     {
-        return $user->can('force_delete_telegram');
+        return $user->can('force_delete_subscribe');
     }
 
     /**
@@ -71,15 +71,15 @@ class TelegramPolicy
      */
     public function forceDeleteAny(User $user): bool
     {
-        return $user->can('force_delete_any_telegram');
+        return $user->can('force_delete_any_subscribe');
     }
 
     /**
      * Determine whether the user can restore.
      */
-    public function restore(User $user, Telegram $telegram): bool
+    public function restore(User $user, Subscribe $subscribe): bool
     {
-        return $user->can('restore_telegram');
+        return $user->can('restore_subscribe');
     }
 
     /**
@@ -87,15 +87,15 @@ class TelegramPolicy
      */
     public function restoreAny(User $user): bool
     {
-        return $user->can('restore_any_telegram');
+        return $user->can('restore_any_subscribe');
     }
 
     /**
      * Determine whether the user can replicate.
      */
-    public function replicate(User $user, Telegram $telegram): bool
+    public function replicate(User $user, Subscribe $subscribe): bool
     {
-        return $user->can('replicate_telegram');
+        return $user->can('replicate_subscribe');
     }
 
     /**
@@ -103,6 +103,6 @@ class TelegramPolicy
      */
     public function reorder(User $user): bool
     {
-        return $user->can('reorder_telegram');
+        return $user->can('reorder_subscribe');
     }
 }

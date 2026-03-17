@@ -1,10 +1,10 @@
 <?php
 
-namespace Modules\SiteSettings\Filament\Resources\TelegramResource\Pages;
+namespace Modules\Telegram\Filament\Resources\TelegramResource\Pages;
 
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
-use Modules\SiteSettings\Filament\Resources\TelegramResource;
+use Modules\Telegram\Filament\Resources\TelegramResource;
 
 class EditTelegram extends EditRecord
 {
