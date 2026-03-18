@@ -111,11 +111,11 @@ class User extends Authenticatable implements HasMedia, HasAvatar, TelegramInter
     public function telegramFields(): array
     {
         return [
-            "Ім'я"              => $this->name,
-            "Прізвище"          => $this->last_name,
-            "Пошта"             => "<a href='mailto:{$this->email}'>{$this->email}</a>",
-            "Телефон"           => $this->phone,
-            "Дата реаєстрації"  => Carbon::parse($this->created_at)
+            "Ім'я:"              => $this->name,
+            "Прізвище:"          => $this->last_name,
+            "Пошта:"             => "<a href='mailto:{$this->email}'>{$this->email}</a>",
+            "Телефон:"           => $this->phone,
+            "Дата реаєстрації:"  => Carbon::parse($this->created_at)
                                             ->timezone('Europe/Kyiv')
                                             ->format("Y-m-d H:i"),
         ];

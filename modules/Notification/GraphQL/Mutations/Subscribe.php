@@ -4,6 +4,7 @@ namespace Modules\Notification\GraphQL\Mutations;
 
 use GraphQL\Error\Error;
 use Illuminate\Support\Facades\DB;
+use Modules\Telegram\Services\TelegramService;
 use Throwable;
 use Modules\Notification\Models\Subscribe as SubscribeModel;
 
@@ -29,6 +30,9 @@ class Subscribe
 
             if (!$subscribe->exists) {
                 $subscribe->save();
+
+                TelegramService::send($subscribe);
+
                 DB::commit();
 
                 return [

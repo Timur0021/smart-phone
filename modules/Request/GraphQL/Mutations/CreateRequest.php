@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Modules\Request\Enums\RequestStatus;
 use Modules\Request\Models\Request;
+use Modules\Telegram\Services\TelegramService;
 use Throwable;
 
 class CreateRequest
@@ -25,7 +26,9 @@ class CreateRequest
 
             $args['request_status'] = RequestStatus::NEW->value;
 
-            Request::query()->create($args);
+            $request = Request::query()->create($args);
+
+            TelegramService::send($request);
 
             DB::commit();
             return [
