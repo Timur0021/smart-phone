@@ -3,11 +3,14 @@
 namespace Modules\Telegram\Filament\Resources;
 
 use Filament\Forms;
+use Filament\Forms\Components\Section;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Columns\ToggleColumn;
 use Filament\Tables\Table;
 use Modules\Telegram\Filament\Resources;
 use Modules\Telegram\Models\Telegram;
@@ -28,8 +31,7 @@ class TelegramResource extends Resource
     {
         return $form
             ->schema([
-
-                Forms\Components\Section::make()
+                Section::make()
                     ->columns()
                     ->schema([
                         TextInput::make('first_name')
@@ -38,7 +40,7 @@ class TelegramResource extends Resource
                         TextInput::make('user_name')
                             ->label('Username')
                             ->required(),
-                        Forms\Components\Toggle::make('status')
+                        Toggle::make('status')
                             ->label('Статус'),
                     ]),
             ]);
@@ -55,7 +57,7 @@ class TelegramResource extends Resource
                     ->label('Ім\'я'),
                 TextColumn::make('user_name')
                     ->label('Username'),
-                Tables\Columns\ToggleColumn::make('status')
+                ToggleColumn::make('status')
                     ->label('Статус'),
             ])
             ->filters([
