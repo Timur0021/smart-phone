@@ -6,12 +6,13 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Modules\Telegram\Contracts\TelegramInterface;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\Translatable\HasTranslations;
 
-class Feedback extends Model
+class Feedback extends Model implements TelegramInterface
 {
     use HasTranslations;
 
@@ -44,5 +45,28 @@ class Feedback extends Model
     public function sliders(): BelongsToMany
     {
         return $this->belongsToMany(Slider::class, 'slider_feedback', 'feedback_id', 'slider_id');
+    }
+
+    public function adminUrl(): string
+    {
+        return config('app.url') . "/admin/feedback";
+    }
+
+    public function telegramTitle(): ?string
+    {
+        return "У вас новий відгук: {$this->id}";
+    }
+
+    public function telegramFields(): array
+    {
+        $stars = str_repeat('⭐', (int) $this->mark);
+
+        return [
+            "Ім'я та прізвище:"     => $this->first_name,
+            "Телефон:"               => $this->phone,
+            "Емейл:"                 => $this->email,
+            "Оцінка користувача:"    => $stars,
+            "Повідомлення:"          => $this->message,
+        ];
     }
 }

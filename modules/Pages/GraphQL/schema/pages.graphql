@@ -107,13 +107,15 @@ input PageInput {
 
 input FeedbackInput {
     first_name: String
+    phone: String
+    email: String
     message: String
     mark: Float
 }
 
-#extend type Mutation {
-#    createFeedback(input: FeedbackInput @spread): Response @field(resolver: "Modules\\Pages\\GraphQL\\Mutations\\CreateFeedback")
-#}
+extend type Mutation {
+    createFeedback(input: FeedbackInput @spread): Response @field(resolver: "Modules\\Pages\\GraphQL\\Mutations\\CreateFeedback")
+}
 
 extend type Query {
     page(input: PageInput! @spread): Page @field(resolver: "Modules\\Pages\\GraphQL\\Queries\\Page")

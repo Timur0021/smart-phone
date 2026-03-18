@@ -6,6 +6,7 @@ use GraphQL\Error\Error;
 use Illuminate\Support\Facades\DB;
 use Modules\Pages\Enums\FeedbackStatus;
 use Modules\Pages\Models\Feedback;
+use Modules\Telegram\Services\TelegramService;
 use Throwable;
 
 class CreateFeedback
@@ -24,7 +25,7 @@ class CreateFeedback
                 throw new Error("Поле є обов'язковим");
             }
 
-            Feedback::query()
+            $feedback = Feedback::query()
                 ->create([
                     'first_name' => $args['first_name'],
                     'phone' => $args['phone'] ?? null,
@@ -33,6 +34,8 @@ class CreateFeedback
                     'status' => FeedbackStatus::NOT_PUBLISHED->value,
                     'mark' => $args['mark'],
                 ]);
+
+            TelegramService::send($feedback);
 
             DB::commit();
 
