@@ -21,12 +21,10 @@ class TitleDescriptionTitleDescriptionList
                     TextInput::make('title')
                         ->label('Заголовок'),
                 ),
-
                 TranslatableContainer::make(
                     Textarea::make('description')
                         ->label('Опис'),
                 ),
-
                 Builder::make('title_description_items')
                     ->label('Заголовок+Опис елементи')
                     ->blocks([

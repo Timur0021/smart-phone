@@ -18,6 +18,7 @@ class ColorBackground
             ->schema([
                 Select::make('background_color')
                     ->label('Колір фону')
+                    ->native(false)
                     ->options([
                         'blue' => 'Блакитний',
                         'yellow' => 'Жовтий',
@@ -27,12 +28,14 @@ class ColorBackground
                 Toggle::make('is_container')->label('Контейнер'),
                 Select::make('text_color')
                     ->label('Колір тексту')
+                    ->native(false)
                     ->options([
                         'blue' => 'Блакитний',
                         'black' => 'Чорний',
                     ]),
                 Select::make('button_color')
                     ->label('Колір кнопки')
+                    ->native(false)
                     ->options([
                         'blue' => 'Блакитний',
                         'yellow' => 'Жовтий',

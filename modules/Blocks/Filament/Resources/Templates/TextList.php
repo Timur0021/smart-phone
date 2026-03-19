@@ -19,7 +19,7 @@ class TextList
                 Builder::make('items')
                     ->label('Елементи')
                     ->blocks([
-                     TextItem::make(),
+                        TextItem::make(),
                     ])->addActionLabel('Додати елемент'),
             ]);
     }

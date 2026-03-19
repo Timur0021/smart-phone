@@ -20,7 +20,6 @@ class TextItem
                     TextInput::make('text_item')
                         ->label('Текст'),
                 ),
-
             ]);
     }
 }

@@ -23,23 +23,19 @@ class IconTitleSubTitleImageItem
                     ->disk('public')
                     ->directory('blocks/icons')
                     ->maxSize(\Modules\Blocks\Models\Block::MAX_FILE_SIZE),
-
                 TranslatableContainer::make(
                     TextInput::make('title')
                         ->label('Заголовок'),
                 ),
-
                 TranslatableContainer::make(
                     TextInput::make('subtitle')
                         ->label('Під Заголовок'),
                 ),
-
                 FileUpload::make('image')
                     ->label('Фото')
                     ->disk('public')
                     ->directory('blocks')
                     ->maxSize(\Modules\Blocks\Models\Block::MAX_FILE_SIZE),
-
                 Builder::make('items')
                     ->label('Елементи')
                     ->blocks([

@@ -23,21 +23,19 @@ class TitleEditorTextList
                     TextInput::make('title')
                         ->label('Заголовок'),
                 ),
-
                 Select::make('size')
                     ->label('Розмір')
+                    ->native(false)
                     ->options([
                         'h1' => 'h1',
                         'h2' => 'h2',
                         'h3' => 'h3',
                     ]),
-
                 FileUpload::make('image')
                     ->label('Зображення')
                     ->disk('public')
                     ->directory('blocks')
                     ->maxSize(\Modules\Blocks\Models\Block::MAX_FILE_SIZE),
-
                 TranslatableContainer::make(
                     TiptapEditor::make('description_editor')
                         ->label('Редактор опису')

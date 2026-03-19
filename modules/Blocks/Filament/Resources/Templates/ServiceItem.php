@@ -20,12 +20,10 @@ class ServiceItem
                     TextInput::make('label')
                         ->label('Назва елемента'),
                 ),
-
                 TranslatableContainer::make(
                     TextInput::make('link')
                         ->label('Посилання'),
                 ),
-
                 FileUpload::make('image')
                     ->label('Зображення')
                     ->disk('public')

@@ -22,7 +22,6 @@ class KeyValue
                     TextInput::make('key')
                         ->label('Ключ'),
                 ),
-
                 TranslatableContainer::make(
                     TiptapEditor::make('value')
                         ->label('Значення')

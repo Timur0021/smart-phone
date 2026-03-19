@@ -27,8 +27,7 @@ class DetailsItem
                 FileUpload::make('image')
                     ->label('Зображення')
                     ->disk('public')
-                    ->maxSize(\Modules\Blocks\Models\Block::MEDDIUM_FILE_SIZE)
-                    ,
+                    ->maxSize(\Modules\Blocks\Models\Block::MEDDIUM_FILE_SIZE),
             ]);
     }
 }

@@ -29,7 +29,6 @@ class FaqItem
                     TiptapEditor::make('answer_text')
                         ->label('Відповідь в редакторі')
                 ),
-
             ]);
     }
 }

@@ -32,6 +32,7 @@ class FileTitleItem
                 ),
                 Select::make('input_type')
                     ->label('Тип Контенту')
+                    ->native(false)
                     ->options([
                         'text' => 'Текст',
                         'phone' => 'Телефон',

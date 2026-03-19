@@ -19,10 +19,10 @@ class Title
                 TranslatableContainer::make(
                     TextInput::make('title')
                         ->label('Заголовок'),
-                )
-                    ,
+                ),
                 Select::make('size')
                     ->label('Розмір')
+                    ->native(false)
                     ->options([
                         'h1' => 'h1',
                         'h2' => 'h2',

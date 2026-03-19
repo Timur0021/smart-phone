@@ -22,12 +22,10 @@ class IconTitleDescriptionItem
                     ->disk('public')
                     ->directory('blocks/icons')
                     ->maxSize(\Modules\Blocks\Models\Block::MAX_FILE_SIZE),
-
                 TranslatableContainer::make(
                     TextInput::make('title')
                         ->label('Заголовок'),
                 ),
-
                 TranslatableContainer::make(
                     TiptapEditor::make('description_editor')
                         ->label('Опис')

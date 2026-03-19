@@ -28,6 +28,7 @@ class SecondTitlesList
                 ),
                 Select::make('input_type_item')
                     ->label('Тип першого заголовка')
+                    ->native(false)
                     ->options([
                         'text' => 'Текст',
                         'phone' => 'Телефон',

@@ -21,13 +21,12 @@ class Services
                     TextInput::make('title')
                         ->label('Заголовок'),
                 ),
-
                 Builder::make('items')
                     ->label('Елементи')
-                ->blocks([
-                    ServiceItem::make(),
-                    DetailsItem::make(),
-                ])->addActionLabel('Додати елемент'),
+                    ->blocks([
+                        ServiceItem::make(),
+                        DetailsItem::make(),
+                    ])->addActionLabel('Додати елемент'),
             ]);
     }
 }

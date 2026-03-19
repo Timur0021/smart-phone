@@ -22,6 +22,7 @@ class SubTitle
                 ),
                 Select::make('size')
                     ->label('Розмір')
+                    ->native(false)
                     ->options([
                         'h3' => 'h3',
                     ])
