@@ -12,6 +12,7 @@ use Mokhosh\FilamentRating\Columns\RatingColumn;
 use Filament\Tables\Actions\BulkActionGroup;
 use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\EditAction;
+use Mokhosh\FilamentRating\RatingTheme;
 
 class FeedbackTable
 {
@@ -24,7 +25,10 @@ class FeedbackTable
                 TextColumn::make('first_name')
                     ->label('Ім\'я'),
                 RatingColumn::make('mark')
-                    ->label('Оцінка'),
+                    ->label('Оцінка')
+                    ->theme(RatingTheme::HalfStars)
+                    ->size('xl')
+                    ->stars(5),
                 BadgeColumn::make('status')
                     ->label('Статус Відгуку')
                     ->badge(fn($state) => FeedbackStatus::tryFrom($state)?->getLabel() ?? 'Unknown')

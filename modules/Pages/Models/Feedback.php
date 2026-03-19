@@ -61,9 +61,8 @@ class Feedback extends Model implements TelegramInterface
     {
         $fullStars = floor($this->mark);
         $halfStar  = ($this->mark - $fullStars) >= 0.5 ? '⯨' : '';
-        $stars = str_repeat('⭐', $fullStars) . $halfStar;
 
-        $stars = "<span style='color:gold;'>$stars</span>";
+        $stars = str_repeat('⭐', $fullStars) . $halfStar;
 
         return [
             "Ім'я та прізвище:"     => $this->first_name,
