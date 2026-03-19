@@ -29,11 +29,12 @@ class FeedbackTable
                     ->theme(RatingTheme::HalfStars)
                     ->size('xl')
                     ->stars(5),
-                BadgeColumn::make('status')
+                TextColumn::make('status')
                     ->label('Статус Відгуку')
-                    ->badge(fn($state) => FeedbackStatus::tryFrom($state)?->getLabel() ?? 'Unknown')
-                    ->color(fn($state) => FeedbackStatus::tryFrom($state)?->getColor() ?? 'gray')
-                    ->icon(fn($state) => FeedbackStatus::tryFrom($state)?->getIcon() ?? 'fas-question-circle')
+                    ->badge()
+                    ->formatStateUsing(fn($state) => FeedbackStatus::tryFrom($state)?->getLabel() ?? $state)
+                    ->color(fn($state) => FeedbackStatus::tryFrom($state)?->getColor() ?? $state)
+                    ->icon(fn($state) => FeedbackStatus::tryFrom($state)?->getIcon())
                     ->sortable(),
                 TextColumn::make('created_at')
                     ->label('Створено')
