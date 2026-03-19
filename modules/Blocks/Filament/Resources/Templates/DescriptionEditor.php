@@ -10,6 +10,7 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use FilamentTiptapEditor\TiptapEditor;
+use Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor;
 use Mvenghaus\FilamentPluginTranslatableInline\Forms\Components\TranslatableContainer;
 
 class DescriptionEditor
@@ -20,8 +21,9 @@ class DescriptionEditor
             ->label('Редактор опису')
             ->schema([
                 TranslatableContainer::make(
-                    TiptapEditor::make('description_editor')
+                    TinyEditor::make('description_editor')
                         ->label('Редактор опису')
+                        ->profile('default')
                         ->columnSpanFull(),
                 ),
             ]);
