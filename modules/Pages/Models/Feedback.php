@@ -59,7 +59,11 @@ class Feedback extends Model implements TelegramInterface
 
     public function telegramFields(): array
     {
-        $stars = str_repeat('⭐', (int) $this->mark);
+        $fullStars = floor($this->mark);
+        $halfStar  = ($this->mark - $fullStars) >= 0.5 ? '⯨' : '';
+        $stars = str_repeat('⭐', $fullStars) . $halfStar;
+
+        $stars = "<span style='color:gold;'>$stars</span>";
 
         return [
             "Ім'я та прізвище:"     => $this->first_name,
