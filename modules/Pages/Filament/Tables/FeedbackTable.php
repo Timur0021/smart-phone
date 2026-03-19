@@ -47,6 +47,7 @@ class FeedbackTable
             ->filters([
                 SelectFilter::make('status')
                     ->label('Статус Відгуку')
+                    ->native(false)
                     ->options(function () {
                         return collect(FeedbackStatus::cases())->mapWithKeys(function ($status) {
                             return [$status->value => $status->getLabel()];
