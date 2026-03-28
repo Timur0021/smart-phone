@@ -3,6 +3,7 @@
 namespace Modules\Products\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -44,6 +45,11 @@ class Brand extends Model implements HasMedia
         $this->addMediaConversion('webp')
             ->format('webp')
             ->nonQueued();
+    }
+
+    public function products(): HasMany
+    {
+        return $this->hasMany(Product::class, 'brand_id');
     }
 
     public function getImageAttribute(): array|null|string
