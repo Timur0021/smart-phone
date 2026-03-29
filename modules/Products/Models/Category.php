@@ -73,6 +73,11 @@ class Category extends Model implements HasMedia
         return $this->hasMany(self::class, 'parent_id')->orderBy('sort_order');
     }
 
+    public function products(): BelongsToMany
+    {
+        return $this->belongsToMany(Product::class, 'product_categories', 'category_id', 'product_id');
+    }
+
     public function characteristics(): BelongsToMany
     {
         return $this->belongsToMany(Characteristic::class, 'category_characteristics', 'category_id', 'characteristic_id');
