@@ -12,4 +12,5 @@ return [
     \Modules\Notification\Providers\NotificationServiceProvider::class,
     \Modules\Blogs\Providers\BlogServiceProvider::class,
     \Modules\Telegram\Providers\TelegramServiceProvider::class,
+    \Modules\NovaPoshta\Providers\NovaPoshtaServiceProvider::class,
 ];
