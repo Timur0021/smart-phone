@@ -13,6 +13,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Modules\Products\Filament\Resources\CharacteristicResource\RelationManagers\ValuesRelationManager;
 use Modules\Products\Filament\Tables\CharacteristicTable;
 use Modules\Products\Models\Characteristic;
 
@@ -47,7 +48,7 @@ class CharacteristicResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            ValuesRelationManager::make(),
         ];
     }
 
