@@ -34,7 +34,6 @@ class ValueResource extends Resource
 
     protected static ?string $modelLabel = 'Значення';
 
-
     public static function form(Form $form): Form
     {
         return ValueForm::configure($form);
