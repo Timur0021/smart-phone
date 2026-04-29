@@ -4,6 +4,7 @@ namespace Modules\Team\Filament\Resources\Admin;
 
 use App\Filament\Resources\Admin\AdminResource\Pages;
 use App\Filament\Resources\Admin\AdminResource\RelationManagers;
+use Archilex\ToggleIconColumn\Columns\ToggleIconColumn;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
@@ -124,6 +125,10 @@ class AdminResource extends Resource
                     ->label(__('uk.role')),
                 TextColumn::make('branch.name')
                     ->label(__('uk.branch')),
+                ToggleIconColumn::make('two_factor_enabled')
+                    ->label('Email 2FA')
+                    ->onIcon('heroicon-s-lock-open')
+                    ->offIcon('heroicon-o-lock-closed'),
             ])
             ->filters([
                 SelectFilter::make('roles')
