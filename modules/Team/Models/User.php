@@ -70,7 +70,6 @@ class User extends Authenticatable implements HasMedia, HasAvatar, TelegramInter
             'password' => 'hashed',
             'parents_data' => 'array',
             'two_factor_enabled' => 'boolean',
-            'two_factor_enabled_at' => 'datetime',
         ];
     }
 

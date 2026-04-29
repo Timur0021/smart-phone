@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->boolean('two_factor_enabled')->default(false);
-            $table->timestamp('two_factor_enabled_at')->nullable();
         });
     }
 
