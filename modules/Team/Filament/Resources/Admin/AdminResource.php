@@ -4,9 +4,11 @@ namespace Modules\Team\Filament\Resources\Admin;
 
 use App\Filament\Resources\Admin\AdminResource\Pages;
 use App\Filament\Resources\Admin\AdminResource\RelationManagers;
+use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -81,8 +83,21 @@ class AdminResource extends Resource
                         Select::make('branch')
                             ->label(__('uk.branch'))
                             ->preload()
-                            ->relationship('branch', 'name')
+                            ->relationship('branch', 'name'),
                     ])->columnSpan(2)->columns(2),
+                Group::make()
+                    ->columnSpanFull()
+                    ->schema([
+                        Section::make('Статус')
+                            ->schema([
+                                Toggle::make('two_factor_enabled')
+                                    ->label('Email 2FA')
+                                    ->helperText('Вимагає код при вході в адмінку')
+                                    ->onColor('success')
+                                    ->offColor('danger')
+                                    ->default(false),
+                            ]),
+                    ]),
             ]);
     }
 

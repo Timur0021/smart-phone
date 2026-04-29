@@ -44,6 +44,8 @@ class User extends Authenticatable implements HasMedia, HasAvatar, TelegramInter
         'remember_me',
         'i_agree',
         'avatar_url',
+        'two_factor_enabled',
+        'two_factor_enabled_at',
     ];
 
     /**
@@ -67,6 +69,8 @@ class User extends Authenticatable implements HasMedia, HasAvatar, TelegramInter
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
             'parents_data' => 'array',
+            'two_factor_enabled' => 'boolean',
+            'two_factor_enabled_at' => 'datetime',
         ];
     }
 
