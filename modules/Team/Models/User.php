@@ -45,7 +45,6 @@ class User extends Authenticatable implements HasMedia, HasAvatar, TelegramInter
         'i_agree',
         'avatar_url',
         'two_factor_enabled',
-        'two_factor_enabled_at',
     ];
 
     /**
