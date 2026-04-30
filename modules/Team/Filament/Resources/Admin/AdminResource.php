@@ -57,6 +57,8 @@ class AdminResource extends Resource
         return $form
             ->schema([
                 Section::make(__('uk.main_section'))
+                    ->columnSpan(2)
+                    ->columns(2)
                     ->schema([
                         TextInput::make('name')
                             ->label(__('uk.name'))
@@ -85,19 +87,6 @@ class AdminResource extends Resource
                             ->label(__('uk.branch'))
                             ->preload()
                             ->relationship('branch', 'name'),
-                    ])->columnSpan(2)->columns(2),
-                Group::make()
-                    ->columnSpanFull()
-                    ->schema([
-                        Section::make('Статус')
-                            ->schema([
-                                Toggle::make('two_factor_enabled')
-                                    ->label('Email 2FA')
-                                    ->helperText('Вимагає код при вході в адмінку')
-                                    ->onColor('success')
-                                    ->offColor('danger')
-                                    ->default(false),
-                            ]),
                     ]),
             ]);
     }
