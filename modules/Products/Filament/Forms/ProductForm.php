@@ -2,7 +2,6 @@
 
 namespace Modules\Products\Filament\Forms;
 
-use App\Forms\Components\DynamicEntityTable;
 use CodeWithDennis\FilamentSelectTree\SelectTree;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Group;
