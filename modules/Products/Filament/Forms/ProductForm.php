@@ -22,7 +22,7 @@ class ProductForm
         return $form
             ->schema([
                 Tabs::make('navigation')
-                    ->columnSpanFull()
+                    ->columnSpan(1)
                     ->tabs([
                         Tab::make('Головна інформація')
                             ->columns(2)
@@ -82,7 +82,6 @@ class ProductForm
                             ]),
                 ]),
                 Group::make()
-                    ->columnSpanFull()
                     ->schema([
                         Section::make('Статус')
                             ->collapsible()
