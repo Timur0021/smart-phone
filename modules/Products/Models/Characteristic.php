@@ -2,6 +2,9 @@
 
 namespace Modules\Products\Models;
 
+use Database\Factories\CharacteristicFactory;
+use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -13,6 +16,7 @@ class Characteristic extends Model
 {
     use HasTranslations;
     use HasSlug;
+    use HasFactory;
 
     protected $table = 'characteristics';
 
@@ -50,5 +54,13 @@ class Characteristic extends Model
             ->where('active', true)
             ->orderBy('sort_order')
             ->orderBy('id');
+    }
+
+    /**
+     * @return CharacteristicFactory|Factory
+     */
+    protected static function newFactory(): CharacteristicFactory|Factory
+    {
+        return CharacteristicFactory::new();
     }
 }

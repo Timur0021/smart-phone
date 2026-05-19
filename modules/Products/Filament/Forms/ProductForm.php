@@ -2,6 +2,7 @@
 
 namespace Modules\Products\Filament\Forms;
 
+use App\Forms\Components\DynamicEntityTable;
 use CodeWithDennis\FilamentSelectTree\SelectTree;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Group;
@@ -13,6 +14,8 @@ use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
+use Modules\Products\Filament\Resources\ValueResource;
+use Modules\Products\Models\Value;
 use Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor;
 
 class ProductForm
