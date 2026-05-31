@@ -24,7 +24,7 @@ class Product
                 throw new Error("Product not found");
             }
 
-            $product?->increment('views');
+            $product?->increment('views_count');
 
             return $product;
         } catch (Error $error) {
