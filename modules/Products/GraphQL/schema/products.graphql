@@ -1,3 +1,20 @@
+type Product {
+    id: Int
+    name: String
+    slug: String
+    quantity: Int
+    price: Float
+    old_price: Float
+    discount: Int
+    views_count: Int
+    active: Boolean
+    meta_title: String
+    meta_description: String
+    brand: Brand
+    categories: [Category]
+    values: [Value]
+}
+
 type Category {
     id: Int
     name: String
@@ -28,6 +45,25 @@ type BrandsData {
     data: [BrandsWithLetters]
 }
 
+type Value {
+    id: Int
+    name: String
+    slug: String
+    sort_order: Int
+    active: Boolean
+    characteristic: [Characteristic]
+}
+
+type Characteristic {
+    id: Int
+    name: String
+    slug: String
+    sort_order: Int
+    active: Boolean
+    show_in_filter: Boolean
+    show_in_product: Boolean
+}
+
 input BrandInput {
     slug: String
 }
@@ -36,7 +72,12 @@ input BrandsInput {
     search: String
 }
 
+input ProductInput {
+    slug: String
+}
+
 extend type Query {
     brand(input: BrandInput @spread): Brand @field(resolver: "Modules\\Products\\GraphQL\\Queries\\Brand")
     brands: BrandsData @field(resolver: "Modules\\Products\\GraphQL\\Queries\\Brands")
+    product(input: ProductInput @spread): Product @field(resolver: "Modules\\Products\\GraphQL\\Queries\\Product")
 }

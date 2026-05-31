@@ -30,9 +30,14 @@ class Product extends Model implements HasMedia
         'old_price',
         'discount',
         'brand_id',
+        'views_count',
         'active',
         'meta_title',
         'meta_description',
+    ];
+
+    protected $attributes = [
+        'views_count' > 0,
     ];
 
     public array $translatable = [
@@ -73,5 +78,19 @@ class Product extends Model implements HasMedia
     public function values(): BelongsToMany
     {
         return $this->belongsToMany(Value::class, 'product_value', 'product_id', 'value_id');
+    }
+
+    public function getImageAttribute(): array|null|string
+    {
+        return $this->getMedia('image')->map(function ($mediaObject) {
+            return $mediaObject->getUrl('webp');
+        })->toArray()[0] ?? null;
+    }
+
+    public function getImagesAttribute(): array|null|string
+    {
+        return $this->getMedia('images')->map(function ($mediaObject) {
+            return $mediaObject->getUrl('webp');
+        })->toArray() ?? [];
     }
 }

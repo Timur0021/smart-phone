@@ -7,6 +7,7 @@ use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\Tabs;
 use Filament\Forms\Components\Tabs\Tab;
 use Filament\Forms\Components\Textarea;
@@ -29,7 +30,7 @@ class ProductForm
                         Tab::make('Головна інформація')
                             ->columns(2)
                             ->schema([
-                                TextInput::make('title')
+                                TextInput::make('name')
                                     ->label('Назва')
                                     ->required()
                                     ->columnSpanFull(),
@@ -73,6 +74,19 @@ class ProductForm
                                     ->label('Опис')
                                     ->profile('default')
                                     ->columnSpanFull(),
+                            ]),
+                        Tab::make('Галерея')
+                            ->schema([
+                                SpatieMediaLibraryFileUpload::make('image')
+                                    ->label('Фото')
+                                    ->columnSpanFull()
+                                    ->collection('image'),
+                                SpatieMediaLibraryFileUpload::make('images')
+                                    ->label('Фото')
+                                    ->columnSpanFull()
+                                    ->multiple()
+                                    ->reorderable()
+                                    ->collection('images'),
                             ]),
                         Tab::make('META')
                             ->schema([
